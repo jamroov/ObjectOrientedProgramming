@@ -20,7 +20,7 @@ public class Main {
 
         jan_kowalski.pet.name = "Burek";
         System.out.println(jan_kowalski.pet.getWeight());
-
+        System.out.println("Something is changed now");
         while (true) {
             if (jan_kowalski.pet.walk().equals(0.0)) {
                 System.out.println("Dog is ok");
@@ -42,11 +42,11 @@ public class Main {
            System.out.printf("%s\n", salary);
            count++;
         }
-        System.out.printf("I have %.2f of money  before buying an open\n", jan_kowalski.getAccountValue());
+        System.out.printf("I have %.2f of money  before buying an opel\n", jan_kowalski.getAccountValue());
         System.out.println("Getting an OPEL!!!");
         jan_kowalski.getCar(opel);
 
-        System.out.printf("I have %.2f  of money  after buying an open", jan_kowalski.getAccountValue());
+        System.out.printf("I have %.2f  of money  after buying an opel\n", jan_kowalski.getAccountValue());
         System.out.print("My car is: ");
         System.out.println(jan_kowalski.automobile.manufacturer +' '+ jan_kowalski.automobile.fuelType);
     }
