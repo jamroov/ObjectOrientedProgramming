@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Devices;
 
 public class Phone {
     final String vendor;

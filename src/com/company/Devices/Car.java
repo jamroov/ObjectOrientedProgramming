@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Devices;
 
 public class Car {
     final String manufacturer;
@@ -8,6 +8,14 @@ public class Car {
         return price;
     }
 
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public String getFuelType() {
+        return fuelType;
+    }
+
     final String fuelType;
 
     public Car(String manufacturer, Double price, String fuelType) {
@@ -15,4 +23,6 @@ public class Car {
         this.price = price;
         this.fuelType = fuelType;
     }
+
+
 }

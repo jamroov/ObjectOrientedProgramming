@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.Devices.Car;
+import com.company.Devices.Phone;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -7,7 +10,6 @@ public class Main {
         Animal burek = new Animal("Dog", 10.5);
         burek.name = "Burek";
         Car opel = new Car("Opel", 72000.00, "Diesel");
-
 
         Phone HujwejMejt10 = new Phone("Hujwej", 5.6);
         HujwejMejt10.price = 1099.0;
@@ -48,6 +50,6 @@ public class Main {
 
         System.out.printf("I have %.2f  of money  after buying an opel\n", jan_kowalski.getAccountValue());
         System.out.print("My car is: ");
-        System.out.println(jan_kowalski.automobile.manufacturer +' '+ jan_kowalski.automobile.fuelType);
+        System.out.println(jan_kowalski.automobile.getManufacturer() +' '+ jan_kowalski.automobile.getFuelType());
     }
 }
