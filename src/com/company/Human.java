@@ -3,7 +3,7 @@ package com.company;
 import com.company.Devices.Car;
 import com.company.Devices.Phone;
 
-public class Human extends Animal{  // Inheritance
+public class Human extends Animal {  // Inheritance
     public String firstName;
     protected String lastName;
     public Animal pet;

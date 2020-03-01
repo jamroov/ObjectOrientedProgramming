@@ -3,7 +3,7 @@ package com.company;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class Animal {
+public class Animal implements Sellable {
     final String specie; //Fields store data
     private Double weight; //Methods manage data
     public String name;
@@ -38,5 +38,10 @@ public class Animal {
             return 0.0;
         }
         return weight;
+    }
+
+    @Override
+    public void sell() {
+        System.out.println("Why u did that? Am sold... \n");
     }
 }

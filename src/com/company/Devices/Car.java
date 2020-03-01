@@ -23,4 +23,13 @@ public class Car extends Device {
     }
 
 
+    @Override
+    public void turnOn() {
+        System.out.println("Engine is running.");
+    }
+
+    @Override
+    public void sell() {
+        System.out.println("Gib me money for this");
+    }
 }

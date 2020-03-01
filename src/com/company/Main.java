@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.Devices.Car;
+import com.company.Devices.Device;
 import com.company.Devices.Phone;
 
 import java.util.HashMap;
@@ -57,5 +58,9 @@ public class Main {
         System.out.println(HujwejMejt10.getVendor());
         System.out.println(opel.price);
         System.out.println(HujwejMejt10.price);
+
+        Device device = new Phone("LG", 5.5); // this is to simple, we need something more granular
+        //An abstract for instance
+        device.turnOn();
     }
 }
