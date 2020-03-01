@@ -62,5 +62,11 @@ public class Main {
         Device device = new Phone("LG", 5.5); // this is to simple, we need something more granular
         //An abstract for instance
         device.turnOn();
+        try {
+            jan_kowalski.sell();
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }

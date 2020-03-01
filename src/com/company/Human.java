@@ -40,6 +40,14 @@ public class Human extends Animal {  // Inheritance
         }
     }
 
+    public void sell() throws Exception {
+        throw new Exception("Don't sell humans goddamit.");
+    }
+
+    public void eat() throws Exception {
+        throw new Exception("Don't eat humans...");
+    }
+
     private boolean isPassValid(String pass) {
         return false;
     }

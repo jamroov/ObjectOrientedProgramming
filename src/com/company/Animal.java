@@ -3,7 +3,7 @@ package com.company;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class Animal implements Sellable {
+public class Animal implements Sellable, Edible {
     final String specie; //Fields store data
     private Double weight; //Methods manage data
     public String name;
@@ -14,7 +14,7 @@ public class Animal implements Sellable {
         this.weight = weight;
     }
 
-    void eat() { // void not returning anything
+    void eat() throws Exception { // void not returning anything
         System.out.println(name + " is eating. Num num num.");
         weight += 1;
     }
@@ -41,7 +41,12 @@ public class Animal implements Sellable {
     }
 
     @Override
-    public void sell() {
+    public void sell() throws Exception {
         System.out.println("Why u did that? Am sold... \n");
+    }
+
+    @Override
+    public void Eat() throws Exception {
+        System.out.println("Why u made of food?");
     }
 }
