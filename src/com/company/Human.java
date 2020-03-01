@@ -3,7 +3,7 @@ package com.company;
 import com.company.Devices.Car;
 import com.company.Devices.Phone;
 
-public class Human extends Animal{
+public class Human extends Animal{  // Inheritance
     public String firstName;
     protected String lastName;
     public Animal pet;
@@ -12,6 +12,10 @@ public class Human extends Animal{
     private Double accountValue = 0.0;
     protected String phoneNumber;
     private Double salary;
+
+    public Human(Double weight) {
+        super("Homo-Sapiens", weight);
+    }
 
     public void Work(Double salary) {
         System.out.println("Working...");

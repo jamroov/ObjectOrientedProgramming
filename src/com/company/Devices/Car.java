@@ -1,15 +1,13 @@
 package com.company.Devices;
 
-public class Car {
-    final String manufacturer;
-    private Double price;
+public class Car extends Device {
 
     public Double getPrice() {
         return price;
     }
 
     public String getManufacturer() {
-        return manufacturer;
+        return super.vendor;
     }
 
     public String getFuelType() {
@@ -19,7 +17,7 @@ public class Car {
     final String fuelType;
 
     public Car(String manufacturer, Double price, String fuelType) {
-        this.manufacturer = manufacturer;
+        super(manufacturer);
         this.price = price;
         this.fuelType = fuelType;
     }

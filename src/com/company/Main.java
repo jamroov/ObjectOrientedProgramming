@@ -3,6 +3,8 @@ package com.company;
 import com.company.Devices.Car;
 import com.company.Devices.Phone;
 
+import java.util.HashMap;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -14,7 +16,7 @@ public class Main {
         Phone HujwejMejt10 = new Phone("Hujwej", 5.6);
         HujwejMejt10.price = 1099.0;
 
-        Human jan_kowalski = new Human();
+        Human jan_kowalski = new Human(80.0);
         jan_kowalski.firstName = "Jan";
         jan_kowalski.lastName = "Kowalski";
         jan_kowalski.pet = burek;
@@ -51,5 +53,9 @@ public class Main {
         System.out.printf("I have %.2f  of money  after buying an opel\n", jan_kowalski.getAccountValue());
         System.out.print("My car is: ");
         System.out.println(jan_kowalski.automobile.getManufacturer() +' '+ jan_kowalski.automobile.getFuelType());
+        System.out.println(opel.getVendor());
+        System.out.println(HujwejMejt10.getVendor());
+        System.out.println(opel.price);
+        System.out.println(HujwejMejt10.price);
     }
 }

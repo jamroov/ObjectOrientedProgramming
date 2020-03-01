@@ -1,12 +1,10 @@
 package com.company.Devices;
 
-public class Phone {
-    final String vendor;
-    public Double price;
+public class Phone extends Device{
     final Double screenSize;
 
     public Phone(String vendor, Double screenSize) {
-        this.vendor = vendor;
+        super(vendor);
         this.screenSize = screenSize;
     }
 }
