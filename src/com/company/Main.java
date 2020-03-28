@@ -1,6 +1,5 @@
 package com.company;
 
-import com.company.Animals.Animal;
 import com.company.Animals.FarmAnimal;
 import com.company.Animals.Pet;
 import com.company.Devices.Car;
@@ -16,8 +15,8 @@ public class Main {
         FarmAnimal krasula = new FarmAnimal("Cow", 300.5, 1250.00);
         FarmAnimal helga = new FarmAnimal("Pig", 289.00, 940.00);
 
-        krasula.Eat_it();
-        helga.Eat_it();
+        krasula.eatIt();
+        helga.eatIt();
 
         burek.name = "Burek";
         Car opel = new Car("Opel", 72000.00, "Diesel", "GD1234J");
