@@ -1,7 +1,7 @@
 package com.company;
 
+import com.company.Animals.Animal;
 import com.company.Devices.Car;
-import com.company.Devices.Device;
 import com.company.Devices.Phone;
 
 public class Human extends Animal {  // Inheritance
@@ -32,7 +32,7 @@ public class Human extends Animal {  // Inheritance
     }
 
     public Human(Double weight) {
-        super("Homo-Sapiens", weight);
+        super("Homo-Sapiens", weight, 0.0);
     }
 
     public void Work(Double salary) {

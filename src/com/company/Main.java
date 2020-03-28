@@ -1,18 +1,26 @@
 package com.company;
 
+import com.company.Animals.Animal;
+import com.company.Animals.FarmAnimal;
+import com.company.Animals.Pet;
 import com.company.Devices.Car;
 import com.company.Devices.Device;
 import com.company.Devices.Phone;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        Animal burek = new Animal("Dog", 10.5);
-        Animal felek = new Animal("Dog", 20.1);
+        Pet burek = new Pet("Dog", 10.5, 150.00);
+        Pet felek = new Pet("Dog", 20.1, 00.00);
+        FarmAnimal krasula = new FarmAnimal("Cow", 300.5, 1250.00);
+        FarmAnimal helga = new FarmAnimal("Pig", 289.00, 940.00);
+
+        krasula.Eat_it();
+        helga.Eat_it();
+
         burek.name = "Burek";
         Car opel = new Car("Opel", 72000.00, "Diesel", "GD1234J");
-
         Phone HujwejMejt10 = new Phone("Hujwej", 5.6);
         HujwejMejt10.price = 1099.0;
 
@@ -59,6 +67,7 @@ public class Main {
         System.out.println(opel.price);
         System.out.println(HujwejMejt10.price);
 
+        Car VolksWagen = new Car("Volkswagen", 90000.00, "Petrol", "GA2141L");
 
         Device device = new Phone("LG", 5.5); // this is to simple, we need something more granular
         //An abstract for instance
@@ -97,6 +106,8 @@ public class Main {
 
         System.out.println("Marek's car: " + Marek_with_stuff.automobile);
         System.out.println("Marek phone: " + Marek_with_stuff.telephone);
+
+        VolksWagen.sell(Grazyna_without_stuff, Marek_with_stuff);
 
         System.out.println();
 

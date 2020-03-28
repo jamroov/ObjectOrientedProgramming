@@ -1,20 +1,30 @@
-package com.company;
+package com.company.Animals;
+
+import com.company.Human;
+import com.company.Sellable;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class Animal implements Sellable, Edible {
+public class Animal implements Sellable {
     final String specie; //Fields store data
-    private Double weight; //Methods manage data
-    public String name;
-    File picture; // Path to a picture
 
-    public Animal(String specie, Double weight) {
-        this.specie = specie;
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 
-    void eat() throws Exception { // void not returning anything
+    private Double weight; //Methods manage data
+    public String name;
+    protected Double Price;
+    File picture; // Path to a picture
+
+    public Animal(String specie, Double weight, Double price) {
+        this.specie = specie;
+        this.weight = weight;
+        this.Price = price;
+    }
+
+    public void eat() throws Exception { // void not returning anything
         System.out.println(name + " is eating. Num num num.");
         weight += 1;
     }
@@ -28,7 +38,7 @@ public class Animal implements Sellable, Edible {
         return weight;
     }
 
-    Double walk() {
+    public Double walk() {
         weight -= 1;
         if (weight < 0) {
             System.out.println("Too many walks, animal is dead");
@@ -42,14 +52,7 @@ public class Animal implements Sellable, Edible {
 
     @Override
     public boolean sell(Human buyer, Human seller) throws Exception {
-        System.out.println("Why u did that? Am sold... \n");
+        System.out.println("Am sold... \n");
         return true;
     }
-
-    @Override
-    public void Eat() throws Exception {
-        System.out.println("Why u made of food?");
-    }
-
-
 }

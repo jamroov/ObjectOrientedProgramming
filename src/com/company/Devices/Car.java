@@ -34,6 +34,10 @@ public class Car extends Device {
 
     @Override
     public boolean sell(Human buyer, Human seller) {
+        if (seller.automobile != this) {
+            System.out.println("You can't sell something you don't own");
+            return false;
+        }
         if (seller.automobile.getPrice() <= buyer.getCash()) {
             buyer.decreaseCash(seller.automobile.getPrice());
             seller.increaseCash(seller.automobile.getPrice());

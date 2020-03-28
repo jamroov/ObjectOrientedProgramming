@@ -1,5 +1,5 @@
 package com.company;
 
 public interface Edible {
-    public void Eat() throws Exception;
+    public void Eat_it() throws Exception;
 }
