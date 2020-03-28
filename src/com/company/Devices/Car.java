@@ -15,9 +15,11 @@ public class Car extends Device {
     }
 
     final String fuelType;
+    final String licencePlate;
 
-    public Car(String manufacturer, Double price, String fuelType) {
+    public Car(String manufacturer, Double price, String fuelType, String licencePlate) {
         super(manufacturer);
+        this.licencePlate = licencePlate;
         this.price = price;
         this.fuelType = fuelType;
     }
@@ -31,5 +33,9 @@ public class Car extends Device {
     @Override
     public void sell() {
         System.out.println("Gib me money for this");
+    }
+
+    public String toString() {
+        return String.format("%s %s %s %s", this.vendor, this.price, this.licencePlate, this.fuelType);
     }
 }

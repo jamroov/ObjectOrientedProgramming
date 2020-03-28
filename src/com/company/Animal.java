@@ -49,4 +49,6 @@ public class Animal implements Sellable, Edible {
     public void Eat() throws Exception {
         System.out.println("Why u made of food?");
     }
+
+
 }

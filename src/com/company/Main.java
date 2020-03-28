@@ -4,15 +4,14 @@ import com.company.Devices.Car;
 import com.company.Devices.Device;
 import com.company.Devices.Phone;
 
-import java.util.HashMap;
-
 public class Main {
 
     public static void main(String[] args) {
 
         Animal burek = new Animal("Dog", 10.5);
+        Animal felek = new Animal("Dog", 20.1);
         burek.name = "Burek";
-        Car opel = new Car("Opel", 72000.00, "Diesel");
+        Car opel = new Car("Opel", 72000.00, "Diesel", "GD1234J");
 
         Phone HujwejMejt10 = new Phone("Hujwej", 5.6);
         HujwejMejt10.price = 1099.0;
@@ -22,8 +21,10 @@ public class Main {
         jan_kowalski.lastName = "Kowalski";
         jan_kowalski.pet = burek;
         jan_kowalski.telephone = HujwejMejt10;
-
         jan_kowalski.pet.name = "Burek";
+
+        Human grazyna_kowalska = new Human(65.0);
+
         System.out.println(jan_kowalski.pet.getWeight());
         System.out.println("Something is changed now");
         while (true) {
@@ -59,6 +60,7 @@ public class Main {
         System.out.println(opel.price);
         System.out.println(HujwejMejt10.price);
 
+
         Device device = new Phone("LG", 5.5); // this is to simple, we need something more granular
         //An abstract for instance
         device.turnOn();
@@ -68,5 +70,16 @@ public class Main {
         catch (Exception e) {
             System.out.println(e);
         }
+        System.out.println(felek.toString());
+        System.out.println(felek);
+        System.out.println(jan_kowalski.pet);
+
+        grazyna_kowalska.automobile = jan_kowalski.automobile;
+
+        grazyna_kowalska.automobile = new Car("Audi", 100000.00, "Diesel", "GWE3261H");
+        System.out.println(grazyna_kowalska.automobile);
+        System.out.println(jan_kowalski.automobile);
+        System.out.println(grazyna_kowalska.automobile.equals(jan_kowalski.automobile));
+        System.out.println(grazyna_kowalska.automobile.toString());
     }
 }
