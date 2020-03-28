@@ -45,7 +45,6 @@ public class Main {
             if (count%6 == 0) {
                 salary += 150;
            }
-           System.out.printf("%s\n", salary);
            count++;
         }
         System.out.printf("I have %.2f of money  before buying an opel\n", jan_kowalski.getAccountValue());
@@ -74,12 +73,39 @@ public class Main {
         System.out.println(felek);
         System.out.println(jan_kowalski.pet);
 
-        grazyna_kowalska.automobile = jan_kowalski.automobile;
+        Phone iPhoneX = new Phone("Apple", 5.5);
+        iPhoneX.price = 3500.00;
 
-        grazyna_kowalska.automobile = new Car("Audi", 100000.00, "Diesel", "GWE3261H");
-        System.out.println(grazyna_kowalska.automobile);
-        System.out.println(jan_kowalski.automobile);
-        System.out.println(grazyna_kowalska.automobile.equals(jan_kowalski.automobile));
-        System.out.println(grazyna_kowalska.automobile.toString());
+        Car Merc = new Car("Mercedes", 120000.00, "Gas", "GWE1341L");
+
+        Human Marek_with_stuff = new Human(80.00);
+        Marek_with_stuff.telephone = iPhoneX;
+        Marek_with_stuff.automobile = Merc;
+        Marek_with_stuff.setCash(100000.00);
+
+        System.out.println("Marek's car: " + Marek_with_stuff.automobile.toString());
+        System.out.println("Marek phone: " + Marek_with_stuff.telephone);
+
+        Human Grazyna_without_stuff = new Human(60.00);
+        Grazyna_without_stuff.setCash(250000.00);
+
+        Marek_with_stuff.telephone.sell(Grazyna_without_stuff, Marek_with_stuff);
+        Marek_with_stuff.automobile.sell(Grazyna_without_stuff, Marek_with_stuff);
+
+        System.out.println("Grazyna car: " + Grazyna_without_stuff.automobile.toString());
+        System.out.println("Grazyna phone: " + Grazyna_without_stuff.telephone);
+
+        System.out.println("Marek's car: " + Marek_with_stuff.automobile);
+        System.out.println("Marek phone: " + Marek_with_stuff.telephone);
+
+        System.out.println();
+
+        //grazyna_kowalska.automobile = jan_kowalski.automobile;
+
+        //grazyna_kowalska.automobile = new Car("Mercedes", 120000.00, "Gas", "GWE1341L");
+        //System.out.println(grazyna_kowalska.automobile);
+        //System.out.println(jan_kowalski.automobile);
+        //System.out.println(grazyna_kowalska.automobile.equals(jan_kowalski.automobile));
+        //System.out.println(grazyna_kowalska.automobile.toString());
     }
 }

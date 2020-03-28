@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.Devices.Car;
+import com.company.Devices.Device;
 import com.company.Devices.Phone;
 
 public class Human extends Animal {  // Inheritance
@@ -12,6 +13,23 @@ public class Human extends Animal {  // Inheritance
     private Double accountValue = 0.0;
     protected String phoneNumber;
     private Double salary;
+    protected Double cash = 1500.00;
+
+    public Double getCash() {
+        return cash;
+    }
+
+    public void setCash(Double cash) {
+        this.cash = cash;
+    }
+
+    public void increaseCash(Double cash) {
+        this.cash += cash;
+    }
+
+    public void decreaseCash(Double cash) {
+        this.cash -= cash;
+    }
 
     public Human(Double weight) {
         super("Homo-Sapiens", weight);

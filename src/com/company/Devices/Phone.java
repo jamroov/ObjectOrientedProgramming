@@ -1,5 +1,7 @@
 package com.company.Devices;
 
+import com.company.Human;
+
 public class Phone extends Device {
     final Double screenSize;
 
@@ -18,7 +20,18 @@ public class Phone extends Device {
     }
 
     @Override
-    public void sell() {
-        System.out.println("Thanks for buying my old phone.");
+    public boolean sell(Human buyer, Human seller) {
+        if (seller.telephone.getPrice() <= buyer.getCash()) {
+            buyer.decreaseCash(seller.telephone.getPrice());
+            seller.increaseCash(seller.telephone.getPrice());
+            buyer.telephone = seller.telephone;
+            seller.telephone = null;
+            System.out.println("Success");
+            return true;
+        }
+        else {
+            System.out.println("Not enough cash");
+            return false;
+        }
     }
 }

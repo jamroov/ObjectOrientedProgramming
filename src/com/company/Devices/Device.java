@@ -1,5 +1,6 @@
 package com.company.Devices;
 
+import com.company.Human;
 import com.company.Sellable;
 
 public abstract class Device implements Sellable {
@@ -19,6 +20,10 @@ public abstract class Device implements Sellable {
         return vendor;
     }
 
-    abstract public void turnOn(); // this is only a template so we know it should return nothing and have something to do with
-                            // turning the device on
+    public Double getPrice() {
+        return this.price;
+    }
+
+    abstract public void turnOn();
+    abstract public boolean sell(Human buyer, Human seller);
 }

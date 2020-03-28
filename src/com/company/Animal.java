@@ -41,8 +41,9 @@ public class Animal implements Sellable, Edible {
     }
 
     @Override
-    public void sell() throws Exception {
+    public boolean sell(Human buyer, Human seller) throws Exception {
         System.out.println("Why u did that? Am sold... \n");
+        return true;
     }
 
     @Override
