@@ -45,7 +45,7 @@ public class Animal implements Sellable, Feedable {
             return this.weight;
         }
         System.out.println("Thanks for the food num num num");
-        System.out.println(String.format("The food consts: %.2f", price));
+        System.out.println(String.format("The food costs: %.2f", price));
         this.weight += amount;
         return this.weight;
     }

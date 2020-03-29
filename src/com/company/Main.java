@@ -4,6 +4,7 @@ import com.company.Animals.FarmAnimal;
 import com.company.Animals.Pet;
 import com.company.Devices.Car;
 import com.company.Devices.Device;
+import com.company.Devices.DieselCar;
 import com.company.Devices.Phone;
 
 public class Main {
@@ -18,5 +19,12 @@ public class Main {
 
         FarmAnimal Helga = new FarmAnimal("Helga", "Pigus-maximus", 125.00, 849.00);
         Helga.feed();
+
+        Human farmer = new Human(75.00, "John");
+        farmer.startFeeding(stefan, 1, 2.0);
+
+        farmer.automobile = new DieselCar("Ursus", 150000.00, "GWE123456" );
+        System.out.println(farmer.automobile.toString());
+        farmer.automobile.refuel();
     }
 }

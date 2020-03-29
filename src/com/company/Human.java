@@ -91,4 +91,9 @@ public class Human extends Animal implements Feedable {  // Inheritance
     public String toString() {
         return String.format("Hello my name is %s, I am a %s and weigh %.2f",this.name,this.getSpecie(),this.getWeight());
     }
+
+    public void startFeeding(Feedable feedable, Integer amount, Double price) {
+        System.out.println("Now " + this.firstName + " feed something");
+        feedable.feed(amount, price);
+    }
 }

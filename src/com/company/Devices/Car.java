@@ -2,30 +2,29 @@ package com.company.Devices;
 
 import com.company.Human;
 
-public class Car extends Device {
+public abstract class Car extends Device {
 
     public Double getPrice() {
         return price;
     }
-
     public String getManufacturer() {
         return super.vendor;
     }
-
     public String getFuelType() {
         return fuelType;
     }
-
-    final String fuelType;
+    private String fuelType = "Unknown";
     final String licencePlate;
 
-    public Car(String manufacturer, Double price, String fuelType, String licencePlate) {
+    public Car(String manufacturer, Double price, String licencePlate) {
         super(manufacturer);
         this.licencePlate = licencePlate;
         this.price = price;
-        this.fuelType = fuelType;
     }
 
+    public void setFuelType(String fuelType) {
+        this.fuelType = fuelType;
+    }
 
     @Override
     public void turnOn() {
@@ -53,4 +52,6 @@ public class Car extends Device {
     public String toString() {
         return String.format("%s %s %s %s", this.vendor, this.price, this.licencePlate, this.fuelType);
     }
+
+    public abstract boolean refuel();
 }
