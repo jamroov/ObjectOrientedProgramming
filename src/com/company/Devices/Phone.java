@@ -38,4 +38,26 @@ public class Phone extends Device {
             return false;
         }
     }
+
+    public boolean installAnApp(String name) {
+        installAnApp(name, 0.0);
+        return true;
+    }
+
+    public boolean installAnApp(String[] apps) {
+        for (String app : apps ) {
+            installAnApp(app);
+        }
+        return true;
+    }
+
+    public boolean installAnApp(String name, Double version) {
+        if (version > 0.0) {
+            System.out.println(String.format("The app %s %.2f is installed", name, version));
+        }
+        else {
+            System.out.println(String.format("The app %s is installed", name));
+        }
+        return true;
+    }
 }

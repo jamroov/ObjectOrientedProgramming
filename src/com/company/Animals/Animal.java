@@ -8,20 +8,24 @@ import java.io.File;
 
 public class Animal implements Sellable {
     final String specie; //Fields store data
-
-    public void setWeight(Double weight) {
-        this.weight = weight;
-    }
-
     private Double weight; //Methods manage data
     public String name;
     protected Double Price;
-    File picture; // Path to a picture
 
-    public Animal(String specie, Double weight, Double price) {
+    public Boolean getAlive() {
+        return Alive;
+    }
+
+    private Boolean Alive = true;
+
+    public Animal(String specie, Double weight, String name) {
+        this.name = name;
         this.specie = specie;
         this.weight = weight;
-        this.Price = price;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
     }
 
     public void eat() throws Exception { // void not returning anything
@@ -29,9 +33,18 @@ public class Animal implements Sellable {
         weight += 1;
     }
 
-    Double feed() { // this returns a double
+    public Double feed() {
+        return feed(1);
+    }
+
+    public Double feed(int amount) {
+        if ( this.weight <= 0.0 || !this.Alive ) {
+            System.out.println("Animal is dead");
+            return 0.0;
+        }
         System.out.println("Thanks for the food num num num");
-        return weight++;
+        this.weight += amount;
+        return this.weight;
     }
 
     public Double getWeight() {
@@ -54,5 +67,14 @@ public class Animal implements Sellable {
     public boolean sell(Human buyer, Human seller) throws Exception {
         System.out.println("Am sold... \n");
         return true;
+    }
+
+    public boolean kill() {
+        this.Alive = false;
+        return false;
+    }
+
+    public String toString() {
+        return String.format("Hello my name is, I am a %s and weigh %.2f and am worth %.2f dollars", this.name, this.specie, this.weight, this.Price);
     }
 }

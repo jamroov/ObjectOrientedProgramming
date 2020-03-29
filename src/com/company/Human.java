@@ -31,8 +31,9 @@ public class Human extends Animal {  // Inheritance
         this.cash -= cash;
     }
 
-    public Human(Double weight) {
-        super("Homo-Sapiens", weight, 0.0);
+    public Human(Double weight, String name) {
+        super("Homo-Sapiens", weight, name);
+        this.firstName = name;
     }
 
     public void Work(Double salary) {
@@ -68,5 +69,18 @@ public class Human extends Animal {  // Inheritance
 
     private boolean isPassValid(String pass) {
         return false;
+    }
+
+    public Double feed(Double amount, Double price) {
+        if (!this.getAlive()) {
+            System.out.println("Am dead");
+            return 0.0;
+        }
+        if (price*amount > this.cash) {
+            System.out.println("CAnnot afford that");
+            return 0.0;
+        }
+        this.setWeight(this.getWeight()+amount);
+        return this.getWeight();
     }
 }
