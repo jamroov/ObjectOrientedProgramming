@@ -3,25 +3,27 @@ package com.company.Animals;
 import com.company.Human;
 import com.company.Sellable;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-
-public class Animal implements Sellable {
-    final String specie; //Fields store data
+public class Animal implements Sellable, Feedable {
+    private String specie; //Fields store data
     private Double weight; //Methods manage data
     public String name;
     protected Double Price;
+    private Boolean Alive = true;
+
+    final Double DEFAULT_FEED_PRICE = 10.0;
 
     public Boolean getAlive() {
         return Alive;
     }
 
-    private Boolean Alive = true;
-
     public Animal(String specie, Double weight, String name) {
-        this.name = name;
         this.specie = specie;
+        this.name = name;
         this.weight = weight;
+    }
+
+    public Animal(){
+        new Animal("", 0.0, "");
     }
 
     public void setWeight(Double weight) {
@@ -34,21 +36,26 @@ public class Animal implements Sellable {
     }
 
     public Double feed() {
-        return feed(1);
+        return feed(1, DEFAULT_FEED_PRICE);
     }
 
-    public Double feed(int amount) {
-        if ( this.weight <= 0.0 || !this.Alive ) {
+    public Double feed(Integer amount, Double price) {
+        if ( this.weight <= 0 || !this.Alive ) {
             System.out.println("Animal is dead");
-            return 0.0;
+            return this.weight;
         }
         System.out.println("Thanks for the food num num num");
+        System.out.println(String.format("The food consts: %.2f", price));
         this.weight += amount;
         return this.weight;
     }
 
     public Double getWeight() {
         return weight;
+    }
+
+    public String getSpecie() {
+        return this.specie;
     }
 
     public Double walk() {
@@ -75,6 +82,6 @@ public class Animal implements Sellable {
     }
 
     public String toString() {
-        return String.format("Hello my name is, I am a %s and weigh %.2f and am worth %.2f dollars", this.name, this.specie, this.weight, this.Price);
+        return String.format("Hello my name is %s, I am a %s and weigh %.2f and am worth %.2f dollars", this.name, this.specie, this.weight, this.Price);
     }
 }

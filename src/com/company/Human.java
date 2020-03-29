@@ -1,10 +1,11 @@
 package com.company;
 
 import com.company.Animals.Animal;
+import com.company.Animals.Feedable;
 import com.company.Devices.Car;
 import com.company.Devices.Phone;
 
-public class Human extends Animal {  // Inheritance
+public class Human extends Animal implements Feedable {  // Inheritance
     public String firstName;
     protected String lastName;
     public Animal pet;
@@ -14,6 +15,11 @@ public class Human extends Animal {  // Inheritance
     protected String phoneNumber;
     private Double salary;
     protected Double cash = 1500.00;
+
+    public Human(Double weight, String name) {
+        super("Homo-Sapiens", weight, name);
+        this.firstName = name;
+    }
 
     public Double getCash() {
         return cash;
@@ -31,19 +37,17 @@ public class Human extends Animal {  // Inheritance
         this.cash -= cash;
     }
 
-    public Human(Double weight, String name) {
-        super("Homo-Sapiens", weight, name);
-        this.firstName = name;
-    }
+
 
     public void Work(Double salary) {
         System.out.println("Working...");
-        accountValue += salary;
+        this.accountValue += salary;
     }
 
     public Double getAccountValue() {
         return accountValue;
     }
+
     public void getCar(Car automobile) {
         this.accountValue -= automobile.getPrice();
         this.automobile = automobile;
@@ -52,8 +56,7 @@ public class Human extends Animal {  // Inheritance
     public Double getSalary(String pass) {
         if (isPassValid(pass)) {
             return salary;
-        }
-        else {
+        } else {
             System.out.println("Authentication failure.");
             return 0.0;
         }
@@ -71,16 +74,21 @@ public class Human extends Animal {  // Inheritance
         return false;
     }
 
-    public Double feed(Double amount, Double price) {
+    public Double feed(Integer amount, Double price) {
         if (!this.getAlive()) {
             System.out.println("Am dead");
             return 0.0;
         }
-        if (price*amount > this.cash) {
+        if (price * amount > this.cash) {
             System.out.println("CAnnot afford that");
             return 0.0;
         }
-        this.setWeight(this.getWeight()+amount);
+        super.feed(amount, amount * price);
+        this.decreaseCash(price*amount);
         return this.getWeight();
+    }
+
+    public String toString() {
+        return String.format("Hello my name is %s, I am a %s and weigh %.2f",this.name,this.getSpecie(),this.getWeight());
     }
 }

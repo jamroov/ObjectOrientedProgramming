@@ -11,8 +11,12 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Human stefan = new Human(80.0, "Stefan");
         stefan.setCash(10.00);
-        stefan.feed(4.0, 1.0);
+        System.out.println(stefan.feed(4, 1.0));
         System.out.println(stefan.getCash());
         System.out.println(stefan.getWeight());
+        System.out.println(stefan.toString());
+
+        FarmAnimal Helga = new FarmAnimal("Helga", "Pigus-maximus", 125.00, 849.00);
+        Helga.feed();
     }
 }
