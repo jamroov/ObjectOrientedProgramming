@@ -7,7 +7,7 @@ import com.company.Devices.Phone;
 
 public class Human extends Animal implements Feedable {  // Inheritance
     public String firstName;
-    protected String lastName;
+    public String lastName;
     public Animal pet;
     public Phone telephone;
     public Car automobile;
@@ -16,9 +16,11 @@ public class Human extends Animal implements Feedable {  // Inheritance
     private Double salary;
     protected Double cash = 1500.00;
 
-    public Human(Double weight, String name) {
+
+    public Human(Double weight, String name, String lastName) {
         super("Homo-Sapiens", weight, name);
         this.firstName = name;
+        this.lastName = lastName;
     }
 
     public Double getCash() {
@@ -37,7 +39,9 @@ public class Human extends Animal implements Feedable {  // Inheritance
         this.cash -= cash;
     }
 
-
+    public String getFullName() {
+        return String.format("%s %s", this.firstName, this.lastName);
+    }
 
     public void Work(Double salary) {
         System.out.println("Working...");
@@ -51,6 +55,7 @@ public class Human extends Animal implements Feedable {  // Inheritance
     public void getCar(Car automobile) {
         this.accountValue -= automobile.getPrice();
         this.automobile = automobile;
+        automobile.owners.add(this.getFullName());
     }
 
     public Double getSalary(String pass) {

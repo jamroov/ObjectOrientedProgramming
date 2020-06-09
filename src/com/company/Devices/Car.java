@@ -2,6 +2,8 @@ package com.company.Devices;
 
 import com.company.Human;
 
+import java.util.ArrayList;
+
 public abstract class Car extends Device {
 
     public Car(String manufacturer, Double price, String licencePlate, Integer yearOfProduction) {
@@ -23,6 +25,7 @@ public abstract class Car extends Device {
     }
     private String fuelType = "Unknown";
     final String licencePlate;
+    public ArrayList<String> owners = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
@@ -56,11 +59,39 @@ public abstract class Car extends Device {
             buyer.decreaseCash(seller.automobile.getPrice());
             seller.increaseCash(seller.automobile.getPrice());
             buyer.automobile = seller.automobile;
+            owners.add(buyer.getFullName());
             seller.automobile = null;
             return true;
         }
         else {
+            System.out.println("This car is too expensive for you.");
             return false;
+        }
+    }
+
+    //Check if am owner
+    public Boolean wasOwner(String name) {
+        return owners.contains(name);
+    }
+
+    public Boolean isCurrOwner(String name) {
+        //Check if name is last in the list of owners aka current owner
+        return owners.get(owners.size() - 1).equals(name);
+    }
+
+    public Integer getNumOwners() {
+        return owners.size();
+    }
+
+    public Boolean haveSold(String owner, String prevOwner) {
+        //We check if owner is one position over previous owner
+        return owners.lastIndexOf(owner) - owners.lastIndexOf(prevOwner) == 1;
+    }
+
+    public void printOwnerHistory() {
+        System.out.println("My owners so far were:");
+        for (int i = 0; i < owners.size(); i++) {
+            System.out.println(String.format("%d: %s", i+1, owners.get(i)));
         }
     }
 
@@ -68,5 +99,5 @@ public abstract class Car extends Device {
         return String.format("%s %s %s %s %s", this.vendor, this.price, this.licencePlate, this.fuelType, this.yearOfProduction);
     }
 
-    public abstract boolean refuel();
+    public abstract void refuel();
 }

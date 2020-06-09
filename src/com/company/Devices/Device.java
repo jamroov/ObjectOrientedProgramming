@@ -32,6 +32,7 @@ public abstract class Device implements Sellable, Comparable<Device> {
 
     @Override
     public int compareTo(Device dev) {
+        //When used in ordered sets will sort objects by yearOfProduction
         return this.yearOfProduction.compareTo(dev.yearOfProduction);
     }
     abstract public void turnOn();

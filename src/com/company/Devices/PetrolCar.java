@@ -7,9 +7,8 @@ public class PetrolCar extends Car {
     }
 
     @Override
-    public boolean refuel() {
+    public void refuel() {
         System.out.println(String.format("Filling tank with %s", this.getFuelType()));
-        return true;
     }
 
     public String toString() {

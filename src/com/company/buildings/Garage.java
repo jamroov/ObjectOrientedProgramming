@@ -34,7 +34,12 @@ public class Garage {
         }
     }
 
+    public void removeCar (Car carToRemove) {
+        cars.remove(carToRemove);
+    }
+
     public void sortCars() {
+        //Cars are automatically sorted by yearOfProduction when added
         System.out.println("Sorting...");
     }
 
