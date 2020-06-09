@@ -27,26 +27,23 @@ public class Main {
         System.out.println(farmer.automobile.toString());
         farmer.automobile.refuel();
 
-        Garage new_garage = new Garage(4);
+
         DieselCar audi = new DieselCar("Audi", 69000.00 ,"GDA 123456", 2004);
         PetrolCar passat = new PetrolCar("Volkswagen", 58456.00, "GKS 5678H", 2010);
         ElectricVehicle tesla = new ElectricVehicle("Tesla", 347000.00, "GD 12H87", 2018);
         DieselCar audi2 = new DieselCar("Audi", 69000.00 ,"GDA 123456", 2004);
-
-        new_garage.storeCar(tesla);
-        new_garage.storeCar(audi);
-        new_garage.storeCar(farmer.automobile);
-        new_garage.storeCar(passat);
-
-        new_garage.listCars();
-        System.out.println("All my cars are worth:");
-        System.out.println(new_garage.sumValueOfCars());
 
         Human Marek = new Human(80.00, "Marek", "Nowak");
         Human Ania = new Human(80.00, "Ania", "Misztal");
         Human Kamil = new Human(80.00, "Kamil", "Heft");
         Human Zygmunt = new Human(80.00, "Zygmunt", "Frojdowicz");
         Human Heniek = new Human(80.00, "Henryk", "Michalak");
+
+        Garage marekGarage = new Garage(4, Marek);
+        Garage aniaGarage = new Garage(4, Ania);
+        Garage kamilGarage = new Garage(4, Kamil);
+        Garage zygmuntGarage = new Garage(4, Zygmunt);
+        Garage heniekGarage = new Garage(4, Heniek);
 
         Marek.setCash(2000000.00);
         Ania.setCash(2000000.00);

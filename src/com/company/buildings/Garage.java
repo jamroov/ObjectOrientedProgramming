@@ -1,15 +1,20 @@
 package com.company.buildings;
 
 import com.company.Devices.Car;
+import com.company.Human;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
 public class Garage {
     final public Integer capacity;
+    final public Human owner;
     public Set<Car> cars = new TreeSet<Car>();
 
-    public Garage(Integer capacity) {
+    public Garage(Integer capacity, @NotNull Human owner) {
         this.capacity = capacity;
+        this.owner = owner;
+        owner.garage = this;
     }
 
     public Boolean carIsStored(Car CarToStore) {

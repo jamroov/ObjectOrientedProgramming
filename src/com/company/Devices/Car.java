@@ -1,10 +1,15 @@
 package com.company.Devices;
 
 import com.company.Human;
+import com.company.buildings.Garage;
 
 import java.util.ArrayList;
 
 public abstract class Car extends Device {
+    private String fuelType = "Unknown";
+    final String licencePlate;
+    public ArrayList<String> owners = new ArrayList<>();
+    private Garage myGarage;
 
     public Car(String manufacturer, Double price, String licencePlate, Integer yearOfProduction) {
         super(manufacturer, yearOfProduction);
@@ -23,9 +28,14 @@ public abstract class Car extends Device {
     public String getLicencePlate() {
         return licencePlate;
     }
-    private String fuelType = "Unknown";
-    final String licencePlate;
-    public ArrayList<String> owners = new ArrayList<>();
+
+    public void setMyGarage(Garage myGarage) {
+        this.myGarage = myGarage;
+    }
+
+    public Garage getMyGarage() {
+        return this.myGarage;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -61,6 +71,9 @@ public abstract class Car extends Device {
             buyer.automobile = seller.automobile;
             owners.add(buyer.getFullName());
             seller.automobile = null;
+            seller.garage.removeCar(this);
+            buyer.garage.storeCar(this);
+            this.setMyGarage(buyer.garage);
             return true;
         }
         else {

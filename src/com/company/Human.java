@@ -4,6 +4,7 @@ import com.company.Animals.Animal;
 import com.company.Animals.Feedable;
 import com.company.Devices.Car;
 import com.company.Devices.Phone;
+import com.company.buildings.Garage;
 
 public class Human extends Animal implements Feedable {  // Inheritance
     public String firstName;
@@ -11,6 +12,7 @@ public class Human extends Animal implements Feedable {  // Inheritance
     public Animal pet;
     public Phone telephone;
     public Car automobile;
+    public Garage garage;
     private Double accountValue = 0.0;
     protected String phoneNumber;
     private Double salary;
@@ -25,6 +27,14 @@ public class Human extends Animal implements Feedable {  // Inheritance
 
     public Double getCash() {
         return cash;
+    }
+
+    public void setGarage(Garage garage) {
+        this.garage = garage;
+    }
+
+    public Garage getGarage() {
+        return this.garage;
     }
 
     public void setCash(Double cash) {
@@ -56,6 +66,7 @@ public class Human extends Animal implements Feedable {  // Inheritance
         this.accountValue -= automobile.getPrice();
         this.automobile = automobile;
         automobile.owners.add(this.getFullName());
+        automobile.setMyGarage(this.garage);
     }
 
     public Double getSalary(String pass) {
