@@ -5,8 +5,8 @@ import com.company.Human;
 public class Phone extends Device {
     final Double screenSize;
 
-    public Phone(String vendor, Double screenSize) {
-        super(vendor);
+    public Phone(String vendor, Double screenSize, Integer yearOfProduction) {
+        super(vendor, yearOfProduction);
         this.screenSize = screenSize;
     }
 

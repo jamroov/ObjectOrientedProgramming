@@ -1,8 +1,8 @@
 package com.company.Devices;
 
 public class ElectricVehicle extends Car {
-    public ElectricVehicle(String manufacturer, Double price, String licencePlate) {
-        super(manufacturer, price, licencePlate);
+    public ElectricVehicle(String manufacturer, Double price, String licencePlate, Integer yearOfProduction) {
+        super(manufacturer, price, licencePlate, yearOfProduction);
         super.setFuelType("Electricity");
     }
 
@@ -13,6 +13,6 @@ public class ElectricVehicle extends Car {
     }
 
     public String toString() {
-        return String.format("Car info: %s\n, %.2f\n, %s\n, %s", this.vendor, this.price, this.getFuelType(), this.licencePlate);
+        return String.format("Car info: %s , %.2f , %s , %s, %s", this.vendor, this.price, this.getFuelType(), this.licencePlate, this.yearOfProduction);
     }
 }

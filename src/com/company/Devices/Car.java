@@ -4,6 +4,11 @@ import com.company.Human;
 
 public abstract class Car extends Device {
 
+    public Car(String manufacturer, Double price, String licencePlate, Integer yearOfProduction) {
+        super(manufacturer, yearOfProduction);
+        this.licencePlate = licencePlate;
+        this.price = price;
+    }
     public Double getPrice() {
         return price;
     }
@@ -13,13 +18,23 @@ public abstract class Car extends Device {
     public String getFuelType() {
         return fuelType;
     }
+    public String getLicencePlate() {
+        return licencePlate;
+    }
     private String fuelType = "Unknown";
     final String licencePlate;
 
-    public Car(String manufacturer, Double price, String licencePlate) {
-        super(manufacturer);
-        this.licencePlate = licencePlate;
-        this.price = price;
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof Car)) {
+            return false;
+        }
+
+        Car car = (Car) o;
+        return this.getLicencePlate().equals(car.getLicencePlate());
     }
 
     public void setFuelType(String fuelType) {
@@ -50,7 +65,7 @@ public abstract class Car extends Device {
     }
 
     public String toString() {
-        return String.format("%s %s %s %s", this.vendor, this.price, this.licencePlate, this.fuelType);
+        return String.format("%s %s %s %s %s", this.vendor, this.price, this.licencePlate, this.fuelType, this.yearOfProduction);
     }
 
     public abstract boolean refuel();
