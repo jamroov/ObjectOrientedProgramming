@@ -4,7 +4,8 @@ import com.company.Devices.Car;
 import com.company.Human;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Garage {
     final public Integer capacity;
@@ -25,21 +26,21 @@ public class Garage {
         return false;
     }
 
-    public void storeCar (Car carToStore) {
+    public void storeCar(Car carToStore) {
         if (!carIsStored(carToStore))
             cars.add(carToStore);
         else
             System.out.println("This car is already in the garage.");
     }
 
-    public void listCars () {
+    public void listCars() {
         System.out.println("Cars currently in the garage:");
         for (Car car : cars) {
             System.out.println(car.toString());
         }
     }
 
-    public void removeCar (Car carToRemove) {
+    public void removeCar(Car carToRemove) {
         cars.remove(carToRemove);
     }
 

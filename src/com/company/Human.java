@@ -6,6 +6,8 @@ import com.company.Devices.Car;
 import com.company.Devices.Phone;
 import com.company.buildings.Garage;
 
+import java.sql.SQLException;
+
 public class Human extends Animal implements Feedable {  // Inheritance
     public String firstName;
     public String lastName;
@@ -19,7 +21,7 @@ public class Human extends Animal implements Feedable {  // Inheritance
     protected Double cash = 1500.00;
 
 
-    public Human(Double weight, String name, String lastName) {
+    public Human(Double weight, String name, String lastName) throws SQLException {
         super("Homo-Sapiens", weight, name);
         this.firstName = name;
         this.lastName = lastName;

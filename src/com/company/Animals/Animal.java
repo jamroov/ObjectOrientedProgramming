@@ -2,6 +2,10 @@ package com.company.Animals;
 
 import com.company.Human;
 import com.company.Sellable;
+import com.company.database.Connector;
+
+import java.sql.SQLException;
+import java.util.Locale;
 
 public class Animal implements Sellable, Feedable {
     private String specie; //Fields store data
@@ -16,13 +20,13 @@ public class Animal implements Sellable, Feedable {
         return Alive;
     }
 
-    public Animal(String specie, Double weight, String name) {
+    public Animal(String specie, Double weight, String name) throws SQLException {
         this.specie = specie;
         this.name = name;
         this.weight = weight;
     }
 
-    public Animal(){
+    public Animal() throws SQLException {
         new Animal("", 0.0, "");
     }
 
@@ -83,5 +87,11 @@ public class Animal implements Sellable, Feedable {
 
     public String toString() {
         return String.format("Hello my name is %s, I am a %s and weigh %.2f and am worth %.2f dollars", this.name, this.specie, this.weight, this.Price);
+    }
+
+    public void save() throws SQLException {
+        String sql = String.format(Locale.US,"insert into animals values('%s', '%s', %.2f)", this.specie, this.name, this.weight);
+        System.out.println(sql);
+        Connector.executeSQL(sql);
     }
 }
