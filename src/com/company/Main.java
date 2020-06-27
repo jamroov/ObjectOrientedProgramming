@@ -1,11 +1,9 @@
 package com.company;
 
 import com.company.Animals.FarmAnimal;
-import com.company.Devices.DieselCar;
-import com.company.Devices.ElectricVehicle;
-import com.company.Devices.PetrolCar;
+import com.company.Animals.Pet;
+import com.company.Devices.*;
 import com.company.buildings.Garage;
-import com.company.database.Connector;
 
 public class Main {
 
@@ -17,19 +15,49 @@ public class Main {
         System.out.println(stefan.feed(4, 1.0));
         System.out.println(stefan.getCash());
         System.out.println(stefan.getWeight());
-        System.out.println(stefan.toString());
-        Connector.connect();
-        Connector.executeSQL("select * from animals");
+
+        //Connector.connect();
+        //Connector.executeSQL("select * from animals");
 
         FarmAnimal Helga = new FarmAnimal("Helga", "Pigus-maximus", 125.00, 849.00);
         Helga.feed();
 
+        Pet Azor = new Pet("dog", 25.00, "Azor", 125.0);
+        stefan.pet = Azor;
+
+        System.out.println("Azor's weight: " + stefan.pet.getWeight());
+        System.out.println("Feeding...");
+        stefan.pet.feed();
+        System.out.println("Azor's weight: " + stefan.pet.getWeight());
+        System.out.println("Walking...");
+        stefan.pet.walk();
+        System.out.println("Azor's weight: " + stefan.pet.getWeight());
+
         Human farmer = new Human(75.00, "John", "Doe");
         farmer.startFeeding(stefan, 1, 2.0);
 
-        farmer.automobile = new DieselCar("Ursus", 150000.00, "GWE123456", 1992);
-        System.out.println(farmer.automobile.toString());
-        farmer.automobile.refuel();
+        Car Ursus = new DieselCar("Ursus", 150000.00, "GWE123456", 1992);
+        Car UrsussClone = new DieselCar("Ursus", 150000.00, "GWE123456", 1992);
+
+        System.out.println("Two cars, same fields using equals():");
+        System.out.println(Ursus.equals(UrsussClone));
+
+        System.out.println(Azor);
+        System.out.println(UrsussClone);
+
+        System.out.println(Azor.toString());
+        System.out.println(stefan.toString());
+        System.out.println(Ursus.toString());
+        stefan.telephone = new Phone("Samsung", 5.4, 2019, 1249.00);
+        System.out.println(stefan.telephone.toString());
+
+        farmer.setSalary(5350.00);
+        farmer.buyCar(Ursus);
+        farmer.increaseSalary(568.00);
+        //farmer.setAutomobile(Ursus);
+        Car FarmersCar = farmer.getAutomobile();
+        FarmersCar.refuel();
+        System.out.println(FarmersCar.toString());
 
 
         DieselCar audi = new DieselCar("Audi", 69000.00, "GDA 123456", 2004);
@@ -55,7 +83,7 @@ public class Main {
         Zygmunt.setCash(2000000.00);
         Heniek.setCash(2000000.00);
 
-        Marek.getCar(tesla);
+        Marek.buyCar(tesla);
         result = Marek.automobile.sell(Ania, Marek);
         if (result)
             System.out.println("Succesfull transaction.");
@@ -79,9 +107,9 @@ public class Main {
             System.out.println("Heniek is the current owner.");
         tesla.printOwnerHistory();
 
-        Connector.connect();
-        Connector.getStatement().execute("select * from animals");
-        Connector.executeSQL("select * from animals");
+        //Connector.connect();
+        //Connector.getStatement().execute("select * from animals");
+        //Connector.executeSQL("select * from animals");
 
     }
 }

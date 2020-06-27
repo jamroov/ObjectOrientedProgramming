@@ -5,8 +5,8 @@ import com.company.Human;
 public class Phone extends Device {
     final Double screenSize;
 
-    public Phone(String vendor, Double screenSize, Integer yearOfProduction) {
-        super(vendor, yearOfProduction);
+    public Phone(String vendor, Double screenSize, Integer yearOfProduction, Double price) {
+        super(vendor, yearOfProduction, price);
         this.screenSize = screenSize;
     }
 
@@ -59,5 +59,10 @@ public class Phone extends Device {
             System.out.println(String.format("The app %s is installed", name));
         }
         return true;
+    }
+
+    public String toString() {
+        return String.format("This is a phone by: %s screen size: %f, production: %d, price: %f",
+                                                        this.vendor, this.screenSize, this.yearOfProduction, this.price);
     }
 }

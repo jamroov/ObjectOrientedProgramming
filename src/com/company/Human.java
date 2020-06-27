@@ -7,6 +7,7 @@ import com.company.Devices.Phone;
 import com.company.buildings.Garage;
 
 import java.sql.SQLException;
+import java.util.Date;
 
 public class Human extends Animal implements Feedable {  // Inheritance
     public String firstName;
@@ -20,6 +21,9 @@ public class Human extends Animal implements Feedable {  // Inheritance
     private Double salary;
     protected Double cash = 1500.00;
 
+    public void setAutomobile(Car automobile) {
+        this.automobile = automobile;
+    }
 
     public Human(Double weight, String name, String lastName) throws SQLException {
         super("Homo-Sapiens", weight, name);
@@ -64,11 +68,55 @@ public class Human extends Animal implements Feedable {  // Inheritance
         return accountValue;
     }
 
-    public void getCar(Car automobile) {
-        this.accountValue -= automobile.getPrice();
-        this.automobile = automobile;
-        automobile.owners.add(this.getFullName());
-        automobile.setMyGarage(this.garage);
+    public void setSalary(Double salary) {
+        if (salary <= 0) {
+            System.out.println("Unable to set salary to none or zero");
+            return;
+        }
+        System.out.println("Salary data annex sending to accounting...");
+        System.out.println("Please contact Joanna Nowak for details about salary annex...");
+        System.out.println("Public Health Insurance and Tax Office know of salary change and there is no use to hide your real income.");
+        this.salary = salary;
+    }
+
+    public void increaseSalary(Double byThisMuch) {
+        if (byThisMuch < 0.00) {
+            System.out.println("This is not a raise");
+            return;
+        }
+        System.out.println("You got a raise today on: " + new Date());
+        System.out.println("Old salary: " + this.salary);
+        System.out.println("New salary: " + (this.salary + byThisMuch ));
+        this.setSalary(this.salary + byThisMuch);
+    }
+
+    public Car getAutomobile() {
+        return automobile;
+    }
+
+    //Setter:
+    public void buyCar(Car automobile) {
+        if (this.salary > automobile.getPrice()) {
+            if (this.accountValue >= automobile.getPrice()) {
+                this.accountValue -= automobile.getPrice();
+            }
+            else {
+                System.out.println("Inssufficient funds but you will pay next month.");
+            }
+            System.out.println("Congrats, you now own a car.");
+            this.automobile = automobile;
+            automobile.owners.add(this.getFullName());
+            automobile.setMyGarage(this.garage);
+        }
+        else if (this.salary > automobile.getPrice()/60) {
+            System.out.println("You had to take a loan to get your car.");
+            this.automobile = automobile;
+            automobile.owners.add(this.getFullName());
+            automobile.setMyGarage(this.garage);
+        }
+        else {
+            System.out.println("You can't buy a car, you need to earn more.");
+        }
     }
 
     public Double getSalary(String pass) {

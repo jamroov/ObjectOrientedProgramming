@@ -12,9 +12,8 @@ public abstract class Car extends Device {
     private Garage myGarage;
 
     public Car(String manufacturer, Double price, String licencePlate, Integer yearOfProduction) {
-        super(manufacturer, yearOfProduction);
+        super(manufacturer, yearOfProduction, price);
         this.licencePlate = licencePlate;
-        this.price = price;
     }
     public Double getPrice() {
         return price;

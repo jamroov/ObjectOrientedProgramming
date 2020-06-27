@@ -9,9 +9,10 @@ public abstract class Device implements Sellable, Comparable<Device> {
     final Integer yearOfProduction;
     public Double price;
 
-    public Device(String vendor, Integer yearOfProduction) {
+    public Device(String vendor, Integer yearOfProduction, Double price) {
         this.vendor = vendor;
         this.yearOfProduction = yearOfProduction;
+        this.price = price;
     }
 
     public void setPrice(Double price) {

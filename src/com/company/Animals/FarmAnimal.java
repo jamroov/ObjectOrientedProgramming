@@ -8,7 +8,7 @@ public class FarmAnimal extends Animal implements Edible {
     public FarmAnimal(String name, String specie, Double weight, Double price) throws SQLException {
         super( specie, weight, name);
         super.Price = price;
-        super.save();
+        //super.save();
     }
 
     @Override
