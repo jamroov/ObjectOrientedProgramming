@@ -2,8 +2,19 @@ package com.company.Devices;
 
 import com.company.Human;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
 public class Phone extends Device {
     final Double screenSize;
+    static final String serverAddress = "http://server.com";
+    static final String defaultProtocol = "IMAP";
+    static final Double defaultVersion = 1.0;
+    static final Double defaultAppPrice = 0.0;
+    public ArrayList<Application> installedApps = new ArrayList<>();
+    private ArrayList<String> installedAppsNames = new ArrayList<>();
 
     public Phone(String vendor, Double screenSize, Integer yearOfProduction, Double price) {
         super(vendor, yearOfProduction, price);
@@ -52,6 +63,7 @@ public class Phone extends Device {
     }
 
     public boolean installAnApp(String name, Double version) {
+
         if (version > 0.0) {
             System.out.println(String.format("The app %s %.2f is installed", name, version));
         }
@@ -59,6 +71,56 @@ public class Phone extends Device {
             System.out.println(String.format("The app %s is installed", name));
         }
         return true;
+    }
+
+    public boolean installAnApp(Application app) {
+        if (!isAppInstalled(app)) {
+            this.installedApps.add(app);
+            this.installedAppsNames.add(app.name);
+            System.out.println(app.name + " installed.");
+            return true;
+        }
+        System.out.println(app.name + " already installed.");
+        return false;
+    }
+
+    public boolean installAnApp(String name, Double version, Double price) {
+        Application thisAPP = new Application(name, version, price);
+        if (!isAppInstalled(thisAPP)) {
+            this.installedApps.add(thisAPP);
+            this.installedAppsNames.add(name);
+            System.out.println(name + " installed.");
+            return true;
+        }
+        System.out.println(name + " already installed.");
+        return false;
+    }
+
+    boolean isAppInstalled(Application app) {
+        return isAppInstalled(app.name);
+    }
+
+    boolean isAppInstalled(String name) {
+        return this.installedAppsNames.contains(name);
+    }
+
+    public Set<Application> getAllApps() {
+        return new HashSet<>(this.installedApps);
+    }
+
+    public void printAllAppsOrdered(String key) {
+        if (key.equals("name")) {
+            TreeSet<String> namesSet = new TreeSet<>(this.installedAppsNames);
+            for (String name : namesSet) {
+                System.out.println(name);
+            }
+        }
+        else if (key.equals("price")) {
+            TreeSet<Application> appsByPrice = new TreeSet<>(this.installedApps);
+            for (Application app : appsByPrice) {
+                System.out.println(app.toString());
+            }
+        }
     }
 
     public String toString() {

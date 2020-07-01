@@ -7,7 +7,7 @@ import com.company.database.Connector;
 import java.sql.SQLException;
 import java.util.Locale;
 
-public class Animal implements Sellable, Feedable {
+public abstract class Animal implements Sellable, Feedable {
     private String specie; //Fields store data
     private Double weight; //Methods manage data
     public String name;
@@ -24,10 +24,6 @@ public class Animal implements Sellable, Feedable {
         this.specie = specie;
         this.name = name;
         this.weight = weight;
-    }
-
-    public Animal() throws SQLException {
-        new Animal("", 0.0, "");
     }
 
     public void setWeight(Double weight) {
@@ -90,7 +86,7 @@ public class Animal implements Sellable, Feedable {
     }
 
     public void save() throws SQLException {
-        String sql = String.format(Locale.US,"insert into animals values('%s', '%s', %.2f)", this.specie, this.name, this.weight);
+        String sql = String.format(Locale.US,"insert into animals values('%s', '%.2f', '%s', '%.2f', '%b')", this.specie, this.weight, this.name, this.Price, this.Alive);
         System.out.println(sql);
         Connector.executeSQL(sql);
     }

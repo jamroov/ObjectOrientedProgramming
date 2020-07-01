@@ -4,6 +4,9 @@ import com.company.Animals.FarmAnimal;
 import com.company.Animals.Pet;
 import com.company.Devices.*;
 import com.company.buildings.Garage;
+import com.company.database.Connector;
+
+import java.util.Set;
 
 public class Main {
 
@@ -35,6 +38,22 @@ public class Main {
 
         Human farmer = new Human(75.00, "John", "Doe");
         farmer.startFeeding(stefan, 1, 2.0);
+
+        Phone Iphone = new Phone("Apple", 5.4, 2019, 3499.00);
+        Iphone.installAnApp(new Application("Fruit Ninja", 1.0, 19.49));
+
+        Application subwaySurfers = new Application("Subway Surfers", 2.4, 5.49);
+        Iphone.installAnApp(subwaySurfers.name, subwaySurfers.version, subwaySurfers.price);
+
+        Iphone.installAnApp(new Application("Fruit Ninja", 1.0, 19.49));
+        Iphone.installAnApp(new Application("Fruit Ninja 2", 1.0, 19.49));
+        Iphone.installAnApp(new Application("Asphalt", 3.0, 10.49));
+        Iphone.installAnApp(new Application("Tetris", 33.0, 1.49));
+        Iphone.installAnApp(new Application("Jungle Speed", 3.4, 6.49));
+
+        Set<Application> iphonesApps = Iphone.getAllApps();
+        Iphone.printAllAppsOrdered("name");
+        Iphone.printAllAppsOrdered("price");
 
         Car Ursus = new DieselCar("Ursus", 150000.00, "GWE123456", 1992);
         Car UrsussClone = new DieselCar("Ursus", 150000.00, "GWE123456", 1992);
@@ -83,7 +102,13 @@ public class Main {
         Zygmunt.setCash(2000000.00);
         Heniek.setCash(2000000.00);
 
+        Marek.setSalary(1250000.00);
+        Ania.setSalary(1250000.00);
+        Kamil.setSalary(1250000.00);
+        Zygmunt.setSalary(1250000.00);
+        Heniek.setSalary(1250000.00);
         Marek.buyCar(tesla);
+
         result = Marek.automobile.sell(Ania, Marek);
         if (result)
             System.out.println("Succesfull transaction.");
@@ -107,9 +132,14 @@ public class Main {
             System.out.println("Heniek is the current owner.");
         tesla.printOwnerHistory();
 
-        //Connector.connect();
-        //Connector.getStatement().execute("select * from animals");
-        //Connector.executeSQL("select * from animals");
+        Connector.connect();
+        Connector.getStatement().execute("select * from animals");
+        Connector.executeSQL("select * from animals");
 
+        FarmAnimal Krasula = new FarmAnimal("Krasula", "Cow", 459.1, 1299.01);
+        Pet Burek = new Pet("Dog", 11.2, "Burek", 50.00);
+
+        Burek.save();
+        Krasula.save();
     }
 }

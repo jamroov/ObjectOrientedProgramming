@@ -4,12 +4,12 @@ import java.sql.*;
 import java.util.Properties;
 
 public class Connector {
-    static final String DB_URL = "jdbc:postgresql://localhost:5433/ObjectOriented";
+    static final String DB_URL = "jdbc:postgresql://localhost:5432/ObjectOriented";
     static final String USER = "postgres";
     static final String PASS = "mati12346";
     static private Connection CONNECTION;
 
-    public static void connect() throws SQLException {
+    public static void connect() throws SQLException, ClassNotFoundException {
         Properties props = new Properties();
         props.setProperty("user", USER);
         props.setProperty("password", PASS);
