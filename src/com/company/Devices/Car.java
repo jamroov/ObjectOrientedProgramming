@@ -1,6 +1,6 @@
 package com.company.Devices;
 
-import com.company.Human;
+import com.company.Animals.Human;
 import com.company.buildings.Garage;
 
 import java.util.ArrayList;

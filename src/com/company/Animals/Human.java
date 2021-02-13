@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Animals;
 
 import com.company.Animals.Animal;
 import com.company.Animals.Feedable;
@@ -25,8 +25,8 @@ public class Human extends Animal implements Feedable {  // Inheritance
         this.automobile = automobile;
     }
 
-    public Human(Double weight, String name, String lastName) throws SQLException {
-        super("Homo-Sapiens", weight, name);
+    public Human(Double weight, String name, String lastName, Gender gender) throws SQLException {
+        super("Homo-Sapiens", weight, name, gender);
         this.firstName = name;
         this.lastName = lastName;
     }
@@ -155,7 +155,10 @@ public class Human extends Animal implements Feedable {  // Inheritance
     }
 
     public String toString() {
-        return String.format("Hello my name is %s, I am a %s and weigh %.2f",this.name,this.getSpecie(),this.getWeight());
+        return String.format(
+                "Hello my name is %s, I am a %s and weigh %.2f. My gender is %s",
+                this.name,this.getSpecie(),this.getWeight(), this.gender.name()
+        );
     }
 
     public void startFeeding(Feedable feedable, Integer amount, Double price) {

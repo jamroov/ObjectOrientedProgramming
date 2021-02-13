@@ -1,7 +1,7 @@
 package com.company.buildings;
 
 import com.company.Devices.Car;
-import com.company.Human;
+import com.company.Animals.Human;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;

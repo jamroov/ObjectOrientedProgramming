@@ -1,7 +1,6 @@
 package com.company.Devices;
 
-import com.company.Human;
-import com.company.Sellable;
+import com.company.Animals.Human;
 
 public abstract class Device implements Sellable, Comparable<Device> {
 

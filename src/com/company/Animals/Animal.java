@@ -1,7 +1,6 @@
 package com.company.Animals;
 
-import com.company.Human;
-import com.company.Sellable;
+import com.company.Devices.Sellable;
 import com.company.database.Connector;
 
 import java.sql.SQLException;
@@ -13,6 +12,7 @@ public abstract class Animal implements Sellable, Feedable {
     public String name;
     protected Double Price;
     private Boolean Alive = true;
+    final Gender gender;
 
     final Double DEFAULT_FEED_PRICE = 10.0;
 
@@ -20,10 +20,11 @@ public abstract class Animal implements Sellable, Feedable {
         return Alive;
     }
 
-    public Animal(String specie, Double weight, String name) throws SQLException {
+    public Animal(String specie, Double weight, String name, Gender gender) throws SQLException {
         this.specie = specie;
         this.name = name;
         this.weight = weight;
+        this.gender = gender;
     }
 
     public void setWeight(Double weight) {

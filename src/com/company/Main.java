@@ -1,10 +1,8 @@
 package com.company;
 
-import com.company.Animals.FarmAnimal;
-import com.company.Animals.Pet;
+import com.company.Animals.*;
 import com.company.Devices.*;
 import com.company.buildings.Garage;
-import com.company.database.Connector;
 
 import java.util.Set;
 
@@ -12,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         Boolean result;
-        Human stefan = new Human(80.0, "Stefan", "Iksinski");
+        Human stefan = new Human(80.0, "Stefan", "Iksinski", Gender.MALE);
 
         stefan.setCash(10.00);
         System.out.println(stefan.feed(4, 1.0));
@@ -22,10 +20,10 @@ public class Main {
         //Connector.connect();
         //Connector.executeSQL("select * from animals");
 
-        FarmAnimal Helga = new FarmAnimal("Helga", "Pigus-maximus", 125.00, 849.00);
+        FarmAnimal Helga = new FarmAnimal("Helga", "Pigus-maximus", 125.00, 849.00, Gender.FEMALE);
         Helga.feed();
 
-        Pet Azor = new Pet("dog", 25.00, "Azor", 125.0);
+        Pet Azor = new Pet("dog", 25.00, "Azor", 125.0, Gender.MALE);
         stefan.pet = Azor;
 
         System.out.println("Azor's weight: " + stefan.pet.getWeight());
@@ -36,10 +34,11 @@ public class Main {
         stefan.pet.walk();
         System.out.println("Azor's weight: " + stefan.pet.getWeight());
 
-        Human farmer = new Human(75.00, "John", "Doe");
+        Human farmer = new Human(75.00, "John", "Doe", Gender.MALE);
         farmer.startFeeding(stefan, 1, 2.0);
 
-        Phone Iphone = new Phone("Apple", 5.4, 2019, 3499.00);
+        Phone Iphone = new Phone("Apple", 5.4, 2019, 3499.00, OperatingSystem.iOS);
+        System.out.println(Iphone.toString());
         Iphone.installAnApp(new Application("Fruit Ninja", 1.0, 19.49));
 
         Application subwaySurfers = new Application("Subway Surfers", 2.4, 5.49);
@@ -67,7 +66,7 @@ public class Main {
         System.out.println(Azor.toString());
         System.out.println(stefan.toString());
         System.out.println(Ursus.toString());
-        stefan.telephone = new Phone("Samsung", 5.4, 2019, 1249.00);
+        stefan.telephone = new Phone("Samsung", 5.4, 2019, 1249.00, OperatingSystem.ANDROID);
         System.out.println(stefan.telephone.toString());
 
         farmer.setSalary(5350.00);
@@ -84,11 +83,11 @@ public class Main {
         ElectricVehicle tesla = new ElectricVehicle("Tesla", 347000.00, "GD 12H87", 2018);
         DieselCar audi2 = new DieselCar("Audi", 69000.00, "GDA 123456", 2004);
 
-        Human Marek = new Human(80.00, "Marek", "Nowak");
-        Human Ania = new Human(80.00, "Ania", "Misztal");
-        Human Kamil = new Human(80.00, "Kamil", "Heft");
-        Human Zygmunt = new Human(80.00, "Zygmunt", "Frojdowicz");
-        Human Heniek = new Human(80.00, "Henryk", "Michalak");
+        Human Marek = new Human(80.00, "Marek", "Nowak", Gender.MALE);
+        Human Ania = new Human(80.00, "Ania", "Misztal", Gender.FEMALE);
+        Human Kamil = new Human(80.00, "Kamil", "Heft", Gender.MALE);
+        Human Zygmunt = new Human(80.00, "Zygmunt", "Frojdowicz", Gender.MALE);
+        Human Heniek = new Human(80.00, "Henryk", "Michalak", Gender.MALE);
 
         Garage marekGarage = new Garage(4, Marek);
         Garage aniaGarage = new Garage(4, Ania);
@@ -136,8 +135,8 @@ public class Main {
         //Connector.getStatement().execute("select * from animals");
         //Connector.executeSQL("select * from animals");
 
-        FarmAnimal Krasula = new FarmAnimal("Krasula", "Cow", 459.1, 1299.01);
-        Pet Burek = new Pet("Dog", 11.2, "Burek", 50.00);
+        FarmAnimal Krasula = new FarmAnimal("Krasula", "Cow", 459.1, 1299.01, Gender.FEMALE);
+        Pet Burek = new Pet("Dog", 11.2, "Burek", 50.00, Gender.MALE);
 
         //Burek.save();
         //Krasula.save();

@@ -1,6 +1,6 @@
 package com.company.Devices;
 
-import com.company.Human;
+import com.company.Animals.Human;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,10 +15,12 @@ public class Phone extends Device {
     static final Double defaultAppPrice = 0.0;
     public ArrayList<Application> installedApps = new ArrayList<>();
     private ArrayList<String> installedAppsNames = new ArrayList<>();
+    final OperatingSystem operatingSystem;
 
-    public Phone(String vendor, Double screenSize, Integer yearOfProduction, Double price) {
+    public Phone(String vendor, Double screenSize, Integer yearOfProduction, Double price, OperatingSystem operatingSystem) {
         super(vendor, yearOfProduction, price);
         this.screenSize = screenSize;
+        this.operatingSystem = operatingSystem;
     }
 
     //Abstract class: you know what you need - you can only extend one class
@@ -124,7 +126,27 @@ public class Phone extends Device {
     }
 
     public String toString() {
-        return String.format("This is a phone by: %s screen size: %f, production: %d, price: %f",
-                                                        this.vendor, this.screenSize, this.yearOfProduction, this.price);
+        String msg = "";
+        msg = "This is a phone by: %s screen size: %f, production: %d, price: %f, os: %s";
+        switch (this.operatingSystem) {
+            case iOS:
+                msg += ", it costs an arm and a leg.";
+                break;
+            case ANDROID:
+                msg += ", it wishes it was an iPhone";
+                break;
+            case LINUX:
+                msg += ", look, a penguin!";
+                break;
+            case WINDOWS:
+                msg += ", how am I still running?";
+                break;
+            default:
+                msg += ", it runs ASM";
+                break;
+        }
+        return String.format(msg,
+                this.vendor, this.screenSize, this.yearOfProduction,
+                this.price, this.operatingSystem.name());
     }
 }
