@@ -132,14 +132,14 @@ public class Main {
             System.out.println("Heniek is the current owner.");
         tesla.printOwnerHistory();
 
-        Connector.connect();
-        Connector.getStatement().execute("select * from animals");
-        Connector.executeSQL("select * from animals");
+        //Connector.connect();
+        //Connector.getStatement().execute("select * from animals");
+        //Connector.executeSQL("select * from animals");
 
         FarmAnimal Krasula = new FarmAnimal("Krasula", "Cow", 459.1, 1299.01);
         Pet Burek = new Pet("Dog", 11.2, "Burek", 50.00);
 
-        Burek.save();
-        Krasula.save();
+        //Burek.save();
+        //Krasula.save();
     }
 }
