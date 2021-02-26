@@ -1,8 +1,8 @@
 package com.company.Devices;
 
 public class ElectricVehicle extends Car {
-    public ElectricVehicle(String manufacturer, Double price, String licencePlate, Integer yearOfProduction) {
-        super(manufacturer, price, licencePlate, yearOfProduction);
+    public ElectricVehicle(String manufacturer, Double price, String licencePlate, Integer yearOfProduction, String model) {
+        super(manufacturer, price, licencePlate, yearOfProduction, model);
         super.setFuelType("Electricity");
     }
 

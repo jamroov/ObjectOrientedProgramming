@@ -4,16 +4,20 @@ import com.company.Animals.Human;
 import com.company.buildings.Garage;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
 
 public abstract class Car extends Device {
     private String fuelType = "Unknown";
     final String licencePlate;
     public ArrayList<String> owners = new ArrayList<>();
     private Garage myGarage;
+    public final String model;
 
-    public Car(String manufacturer, Double price, String licencePlate, Integer yearOfProduction) {
+    public Car(String manufacturer, Double price, String licencePlate, Integer yearOfProduction, String model) {
         super(manufacturer, yearOfProduction, price);
         this.licencePlate = licencePlate;
+        this.model = model;
     }
     public Double getPrice() {
         return price;

@@ -1,8 +1,8 @@
 package com.company.Devices;
 
 public class DieselCar extends Car {
-    public DieselCar(String manufacturer, Double price, String licencePlate, Integer yearOfProduction) {
-        super(manufacturer, price, licencePlate, yearOfProduction);
+    public DieselCar(String manufacturer, Double price, String licencePlate, Integer yearOfProduction, String model) {
+        super(manufacturer, price, licencePlate, yearOfProduction, model);
         this.setFuelType("Diesel");
     }
 

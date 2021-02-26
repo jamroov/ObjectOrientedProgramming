@@ -4,13 +4,13 @@ import com.company.Devices.Car;
 import com.company.Animals.Human;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Garage {
     final public Integer capacity;
     final public Human owner;
     public Set<Car> cars = new TreeSet<Car>();
+    public HashMap<String, Car> carsMap = new HashMap<>(); //String model Car car
 
     public Garage(Integer capacity, @NotNull Human owner) {
         this.capacity = capacity;
@@ -27,10 +27,14 @@ public class Garage {
     }
 
     public void storeCar(Car carToStore) {
-        if (!carIsStored(carToStore))
+        if (!carIsStored(carToStore)) {
             cars.add(carToStore);
-        else
+            carsMap.put(carToStore.model, carToStore);
+        }
+
+        else {
             System.out.println("This car is already in the garage.");
+        }
     }
 
     public void listCars() {
@@ -55,5 +59,12 @@ public class Garage {
             value += car.getPrice();
         }
         return value;
+    }
+
+    public void printCarMapSorted() {
+        Map<String, Car> forSorting = new TreeMap<>(this.carsMap);
+        for (String key : forSorting.keySet()) {
+            System.out.println(key);
+        }
     }
 }

@@ -54,8 +54,8 @@ public class Main {
         Iphone.printAllAppsOrdered("name");
         Iphone.printAllAppsOrdered("price");
 
-        Car Ursus = new DieselCar("Ursus", 150000.00, "GWE123456", 1992);
-        Car UrsussClone = new DieselCar("Ursus", 150000.00, "GWE123456", 1992);
+        Car Ursus = new DieselCar("Ursus", 150000.00, "GWE123456", 1992, "C-60");
+        Car UrsussClone = new DieselCar("Ursus", 150000.00, "GWE123456", 1992, "C-360");
 
         System.out.println("Two cars, same fields using equals():");
         System.out.println(Ursus.equals(UrsussClone));
@@ -78,10 +78,10 @@ public class Main {
         System.out.println(FarmersCar.toString());
 
 
-        DieselCar audi = new DieselCar("Audi", 69000.00, "GDA 123456", 2004);
-        PetrolCar passat = new PetrolCar("Volkswagen", 58456.00, "GKS 5678H", 2010);
-        ElectricVehicle tesla = new ElectricVehicle("Tesla", 347000.00, "GD 12H87", 2018);
-        DieselCar audi2 = new DieselCar("Audi", 69000.00, "GDA 123456", 2004);
+        DieselCar audi = new DieselCar("Audi", 69000.00, "GDA 123456", 2004, "Audi A3");
+        PetrolCar passat = new PetrolCar("Volkswagen", 58456.00, "GKS 5678H", 2010, "Passat B5");
+        ElectricVehicle tesla = new ElectricVehicle("Tesla", 347000.00, "GD 12H87", 2018, "Tesla Model S");
+        DieselCar audi2 = new DieselCar("Audi", 69000.00, "GDA 123456", 2004, "Audi A4");
 
         Human Marek = new Human(80.00, "Marek", "Nowak", Gender.MALE);
         Human Ania = new Human(80.00, "Ania", "Misztal", Gender.FEMALE);
@@ -140,5 +140,12 @@ public class Main {
 
         //Burek.save();
         //Krasula.save();
+
+        Zygmunt.garage.storeCar(audi);
+        Zygmunt.garage.storeCar(audi2);
+        Zygmunt.garage.storeCar(tesla);
+        Zygmunt.garage.storeCar(passat);
+
+        Zygmunt.garage.printCarMapSorted();
     }
 }
