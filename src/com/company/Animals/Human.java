@@ -26,7 +26,7 @@ public class Human extends Animal implements Feedable {  // Inheritance
     }
 
     public Human(Double weight, String name, String lastName, Gender gender) throws SQLException {
-        super("Homo-Sapiens", weight, name, gender);
+        super("Homo-Sapiens", weight, name, gender, com.company.Animals.foodType.ANYTHING);
         this.firstName = name;
         this.lastName = lastName;
     }
@@ -140,7 +140,7 @@ public class Human extends Animal implements Feedable {  // Inheritance
         return false;
     }
 
-    public Double feed(Integer amount, Double price) {
+    public Double feed(Double amount, Double price) {
         if (!this.getAlive()) {
             System.out.println("Am dead");
             return 0.0;
@@ -149,7 +149,7 @@ public class Human extends Animal implements Feedable {  // Inheritance
             System.out.println("CAnnot afford that");
             return 0.0;
         }
-        super.feed(amount, amount * price);
+        super.feed(amount, amount * price, this.foodType);
         this.decreaseCash(price*amount);
         return this.getWeight();
     }
@@ -161,8 +161,8 @@ public class Human extends Animal implements Feedable {  // Inheritance
         );
     }
 
-    public void startFeeding(Feedable feedable, Integer amount, Double price) {
+    public void startFeeding(Feedable feedable, Double amount, Double price) {
         System.out.println("Now " + this.firstName + " feed something");
-        feedable.feed(amount, price);
+        feedable.feed(amount, price, this.foodType);
     }
 }

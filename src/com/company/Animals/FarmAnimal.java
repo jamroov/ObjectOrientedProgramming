@@ -3,8 +3,8 @@ package com.company.Animals;
 import java.sql.SQLException;
 
 public class FarmAnimal extends Animal implements Edible {
-    public FarmAnimal(String name, String specie, Double weight, Double price, Gender gender) throws SQLException {
-        super( specie, weight, name, gender);
+    public FarmAnimal(String name, String specie, Double weight, Double price, Gender gender, foodType foodType) throws SQLException {
+        super( specie, weight, name, gender, foodType);
         super.Price = price;
         //super.save();
     }

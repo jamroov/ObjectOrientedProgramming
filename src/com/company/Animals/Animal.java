@@ -13,6 +13,7 @@ public abstract class Animal implements Sellable, Feedable {
     protected Double Price;
     private Boolean Alive = true;
     final Gender gender;
+    final foodType foodType;
 
     final Double DEFAULT_FEED_PRICE = 10.0;
 
@@ -20,11 +21,12 @@ public abstract class Animal implements Sellable, Feedable {
         return Alive;
     }
 
-    public Animal(String specie, Double weight, String name, Gender gender) throws SQLException {
+    public Animal(String specie, Double weight, String name, Gender gender, foodType foodType) throws SQLException {
         this.specie = specie;
         this.name = name;
         this.weight = weight;
         this.gender = gender;
+        this.foodType = foodType;
     }
 
     public void setWeight(Double weight) {
@@ -37,17 +39,28 @@ public abstract class Animal implements Sellable, Feedable {
     }
 
     public Double feed() {
-        return feed(1, DEFAULT_FEED_PRICE);
+        return feed(1.0, DEFAULT_FEED_PRICE, com.company.Animals.foodType.ANYTHING);
     }
 
-    public Double feed(Integer amount, Double price) {
+    public Double feed(Double amount, Double price, foodType foodType) {
+        Double ratio = 0.0;
         if ( this.weight <= 0 || !this.Alive ) {
             System.out.println("Animal is dead");
             return this.weight;
         }
+        switch (this.foodType) {
+            case MEAT:
+            case PLANTS: ;
+            case ANYTHING:
+                ratio = foodType.foodToBodyRatio;
+                break;
+            default:
+                System.out.println("I can't eat that.");
+                return this.weight;
+        }
+        this.weight += ratio * amount;
         System.out.println("Thanks for the food num num num");
         System.out.println(String.format("The food costs: %.2f", price));
-        this.weight += amount;
         return this.weight;
     }
 

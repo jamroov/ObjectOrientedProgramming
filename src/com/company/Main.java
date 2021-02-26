@@ -13,17 +13,17 @@ public class Main {
         Human stefan = new Human(80.0, "Stefan", "Iksinski", Gender.MALE);
 
         stefan.setCash(10.00);
-        System.out.println(stefan.feed(4, 1.0));
+        System.out.println(stefan.feed(4.0, 1.0));
         System.out.println(stefan.getCash());
         System.out.println(stefan.getWeight());
 
         //Connector.connect();
         //Connector.executeSQL("select * from animals");
 
-        FarmAnimal Helga = new FarmAnimal("Helga", "Pigus-maximus", 125.00, 849.00, Gender.FEMALE);
+        FarmAnimal Helga = new FarmAnimal("Helga", "Pigus-maximus", 125.00, 849.00, Gender.FEMALE, foodType.PLANTS);
         Helga.feed();
 
-        Pet Azor = new Pet("dog", 25.00, "Azor", 125.0, Gender.MALE);
+        Pet Azor = new Pet("dog", 25.00, "Azor", 125.0, Gender.MALE, foodType.ANYTHING);
         stefan.pet = Azor;
 
         System.out.println("Azor's weight: " + stefan.pet.getWeight());
@@ -35,7 +35,7 @@ public class Main {
         System.out.println("Azor's weight: " + stefan.pet.getWeight());
 
         Human farmer = new Human(75.00, "John", "Doe", Gender.MALE);
-        farmer.startFeeding(stefan, 1, 2.0);
+        farmer.startFeeding(stefan, 1.0, 2.0);
 
         Phone Iphone = new Phone("Apple", 5.4, 2019, 3499.00, OperatingSystem.iOS);
         System.out.println(Iphone.toString());
@@ -135,8 +135,8 @@ public class Main {
         //Connector.getStatement().execute("select * from animals");
         //Connector.executeSQL("select * from animals");
 
-        FarmAnimal Krasula = new FarmAnimal("Krasula", "Cow", 459.1, 1299.01, Gender.FEMALE);
-        Pet Burek = new Pet("Dog", 11.2, "Burek", 50.00, Gender.MALE);
+        FarmAnimal Krasula = new FarmAnimal("Krasula", "Cow", 459.1, 1299.01, Gender.FEMALE, foodType.PLANTS);
+        Pet Burek = new Pet("Dog", 11.2, "Burek", 50.00, Gender.MALE, foodType.MEAT);
 
         //Burek.save();
         //Krasula.save();
