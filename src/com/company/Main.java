@@ -2,6 +2,8 @@ package com.company;
 
 import com.company.Animals.*;
 import com.company.Devices.*;
+import com.company.World.CountryEnum;
+import com.company.World.CountryHashMap;
 import com.company.buildings.Garage;
 
 import java.util.Set;
@@ -147,5 +149,13 @@ public class Main {
         Zygmunt.garage.storeCar(passat);
 
         Zygmunt.garage.printCarMapSorted();
+
+        CountryHashMap thisCountryHashMap = new CountryHashMap();
+        for (CountryEnum country : CountryEnum.values()) {
+            thisCountryHashMap.addCountryToMap(country, country.area);
+        }
+
+        thisCountryHashMap.getAreaMax();
+        thisCountryHashMap.getAreaMin();
     }
 }
