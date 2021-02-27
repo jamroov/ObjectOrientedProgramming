@@ -2,6 +2,9 @@ package com.company.Devices;
 
 import com.company.Animals.Human;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public abstract class Device implements Sellable, Comparable<Device> {
 
     final String vendor;

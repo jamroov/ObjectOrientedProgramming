@@ -112,7 +112,7 @@ public abstract class Car extends Device {
     }
 
     public String toString() {
-        return String.format("%s %s %s %s %s", this.vendor, this.price, this.licencePlate, this.fuelType, this.yearOfProduction);
+        return String.format("%s %s %s %s %s %s", this.vendor, this.model, this.price, this.licencePlate, this.fuelType, this.yearOfProduction);
     }
 
     public abstract void refuel();

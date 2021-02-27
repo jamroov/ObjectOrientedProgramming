@@ -6,6 +6,9 @@ import com.company.World.CountryEnum;
 import com.company.World.CountryHashMap;
 import com.company.buildings.Garage;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 public class Main {
@@ -157,5 +160,30 @@ public class Main {
 
         thisCountryHashMap.getAreaMax();
         thisCountryHashMap.getAreaMin();
+        ManufacturersMap mapOfManuf = new ManufacturersMap();
+        Car FordMondeo = new PetrolCar("Ford", 125000.00, "GWE14567", 2019, "Mondeo");
+
+        mapOfManuf.addDeviceToMap(FordMondeo.getManufacturer(), FordMondeo);
+        mapOfManuf.addDeviceToMap(audi.getManufacturer(), audi);
+        mapOfManuf.addDeviceToMap(audi2.getManufacturer(), audi2);
+        mapOfManuf.addDeviceToMap(Iphone.getVendor(), Iphone);
+
+        ArrayList<Device> devices = mapOfManuf.getDevicesByManuf("Audi");
+        System.out.println("Stuff in map of manufacturers");
+        for (Device item : devices) {
+            System.out.println(item.toString());
+        }
+
+        devices = mapOfManuf.getDevicesByManuf("Ford");
+        System.out.println("Stuff in map of manufacturers");
+        for (Device item : devices) {
+            System.out.println(item.toString());
+        }
+
+        devices = mapOfManuf.getDevicesByManuf("Apple");
+        System.out.println("Stuff in map of manufacturers");
+        for (Device item : devices) {
+            System.out.println(item.toString());
+        }
     }
 }
