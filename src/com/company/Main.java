@@ -169,21 +169,27 @@ public class Main {
         mapOfManuf.addDeviceToMap(Iphone.getVendor(), Iphone);
 
         ArrayList<Device> devices = mapOfManuf.getDevicesByManuf("Audi");
-        System.out.println("Stuff in map of manufacturers");
-        for (Device item : devices) {
-            System.out.println(item.toString());
+        if (devices != null) {
+            System.out.println("Stuff in map of manufacturers");
+            for (Device item : devices) {
+                System.out.println(item.toString());
+            }
         }
 
         devices = mapOfManuf.getDevicesByManuf("Ford");
-        System.out.println("Stuff in map of manufacturers");
-        for (Device item : devices) {
-            System.out.println(item.toString());
+        if (devices != null) {
+            System.out.println("Stuff in map of manufacturers");
+            for (Device item : devices) {
+                System.out.println(item.toString());
+            }
         }
 
         devices = mapOfManuf.getDevicesByManuf("Apple");
-        System.out.println("Stuff in map of manufacturers");
-        for (Device item : devices) {
-            System.out.println(item.toString());
+        if (devices != null) {
+            System.out.println("Stuff in map of manufacturers");
+            for (Device item : devices) {
+                System.out.println(item.toString());
+            }
         }
     }
 }
