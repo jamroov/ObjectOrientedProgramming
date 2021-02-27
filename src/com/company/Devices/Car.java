@@ -13,11 +13,62 @@ public abstract class Car extends Device {
     public ArrayList<String> owners = new ArrayList<>();
     private Garage myGarage;
     public final String model;
+    public Boolean isRunning;
+    public Engine engine;
+
+    private class Engine {
+        private Double horsePower;
+        private Double volume;
+        private Integer mileage;
+
+        public Double getHorsePower() {
+            return horsePower;
+        }
+
+        public void setHorsePower(Double horsePower) {
+            this.horsePower = horsePower;
+        }
+
+        public Double getVolume() {
+            return volume;
+        }
+
+        public void setVolume(Double volume) {
+            this.volume = volume;
+        }
+
+        public Integer getMileage() {
+            return mileage;
+        }
+
+        public void setMileage(Integer mileage) {
+            this.mileage = mileage;
+        }
+
+        public void turnOn() {
+            System.out.println("Engine is running.");
+            startACar();
+        }
+
+        public void turnOff() {
+            System.out.println("Engine stop.");
+            stopACar();
+        }
+    }
 
     public Car(String manufacturer, Double price, String licencePlate, Integer yearOfProduction, String model) {
         super(manufacturer, yearOfProduction, price);
         this.licencePlate = licencePlate;
         this.model = model;
+        this.engine = new Car.Engine();
+    }
+
+    public void startACar() {
+        this.isRunning = true;
+    }
+
+    public void stopACar() {
+        this.isRunning = false;
     }
     public Double getPrice() {
         return price;
@@ -55,11 +106,6 @@ public abstract class Car extends Device {
 
     public void setFuelType(String fuelType) {
         this.fuelType = fuelType;
-    }
-
-    @Override
-    public void turnOn() {
-        System.out.println("Engine is running.");
     }
 
     @Override
