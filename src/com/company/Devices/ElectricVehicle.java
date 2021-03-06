@@ -14,4 +14,9 @@ public class ElectricVehicle extends Car {
     public String toString() {
         return String.format("Car info: %s , %.2f , %s , %s, %s", this.vendor, this.price, this.getFuelType(), this.licencePlate, this.yearOfProduction);
     }
+    @Override
+    public void turnOn() {
+        this.isRunning = true;
+        System.out.println("Vroom vroom");
+    }
 }

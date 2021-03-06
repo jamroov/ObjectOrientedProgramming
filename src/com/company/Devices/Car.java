@@ -82,11 +82,16 @@ public abstract class Car extends Device {
     public String getLicencePlate() {
         return licencePlate;
     }
+    public Double getEngineVolume() { return this.engine.getVolume(); }
 
     public void setMyGarage(Garage myGarage) {
         this.myGarage = myGarage;
     }
-
+    public void setEngine(Double hp, Double volume, Integer mileage) {
+        this.engine.setHorsePower(hp);
+        this.engine.setVolume(volume);
+        this.engine.setMileage(mileage);
+    }
     public Garage getMyGarage() {
         return this.myGarage;
     }
