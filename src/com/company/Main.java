@@ -6,10 +6,7 @@ import com.company.World.CountryEnum;
 import com.company.World.CountryHashMap;
 import com.company.buildings.Garage;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
 
@@ -190,6 +187,53 @@ public class Main {
             for (Device item : devices) {
                 System.out.println(item.toString());
             }
+        }
+        List<Car> carList = new ArrayList<>();
+        audi.setEngine(150.00, 2000.00, 1246);
+        audi2.setEngine(150.00, 2500.00, 1446);
+        Ursus.setEngine(250.00, 3500.00, 1566);
+
+        carList.add(audi);
+        carList.add(audi2);
+        carList.add(Ursus);
+
+        Comparator<Car> carComparator = new Comparator<Car>() {
+            @Override
+            public int compare(Car car1, Car car2) {
+                Double car1_volume = car1.getEngineVolume();
+                Double car2_volume = car2.getEngineVolume();
+                return (int) (car1_volume - car2_volume);
+            }
+
+            @Override
+            public boolean equals(Object obj) {
+                return super.equals(obj);
+            }
+        };
+        carList.sort(carComparator);
+
+        Comparator<Animal> animalComparator = new Comparator<Animal>() {
+            @Override
+            public int compare(Animal animal1, Animal animal2) {
+                return (int) (animal1.getWeight() - animal2.getWeight());
+            }
+        };
+
+        List<Animal> animalList = new ArrayList<>();
+        animalList.add(Krasula);
+        animalList.add(Zygmunt);
+        animalList.add(Azor);
+        animalList.add(Helga);
+        animalList.add(new Pet("Cat", 10.00, "Mruczek", 125.00, Gender.MALE, foodType.MEAT));
+        animalList.add(Marek);
+        System.out.println("animalList before sort");
+        for (Animal animal : animalList) {
+            System.out.println(animal.toString());
+        }
+        animalList.sort(animalComparator);
+        System.out.println("animalList after sort");
+        for (Animal animal : animalList) {
+            System.out.println(animal.toString());
         }
     }
 }
