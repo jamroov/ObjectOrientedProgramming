@@ -54,6 +54,8 @@ public abstract class Car extends Device {
             System.out.println("Engine stop.");
             stopACar();
         }
+
+        public Engine getEngine() { return this; }
     }
 
     public Car(String manufacturer, Double price, String licencePlate, Integer yearOfProduction, String model) {
@@ -92,6 +94,7 @@ public abstract class Car extends Device {
         this.engine.setVolume(volume);
         this.engine.setMileage(mileage);
     }
+    public Engine getEngine() { return this.engine; };
     public Garage getMyGarage() {
         return this.myGarage;
     }

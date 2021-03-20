@@ -17,6 +17,6 @@ public class ElectricVehicle extends Car {
     @Override
     public void turnOn() {
         this.isRunning = true;
-        System.out.println("Vroom vroom");
+        System.out.println("bzzzzzzzz");
     }
 }

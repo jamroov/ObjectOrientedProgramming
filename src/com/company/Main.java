@@ -5,8 +5,11 @@ import com.company.Devices.*;
 import com.company.World.CountryEnum;
 import com.company.World.CountryHashMap;
 import com.company.buildings.Garage;
+import threads.Finisher;
+import threads.RunnableCounter;
 
 import java.util.*;
+import java.util.concurrent.*;
 
 public class Main {
 
@@ -235,5 +238,85 @@ public class Main {
         for (Animal animal : animalList) {
             System.out.println(animal.toString());
         }
+        //System.out.println(updateSomeData("very new data indeed"));
+        Runnable counter = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    for (int i = 0; i < 10; i++) {
+                        System.out.println(i);
+                        Thread.sleep(1000);
+                    }
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        //ScheduledExecutorService execService = Executors.newSingleThreadScheduledExecutor();
+        //ScheduledExecutorService execService1 = Executors.newSingleThreadScheduledExecutor();
+        //ScheduledExecutorService execService2 = Executors.newSingleThreadScheduledExecutor();
+
+        //execService.schedule(counter, 1, TimeUnit.MICROSECONDS);
+        //execService1.schedule(counter, 1, TimeUnit.MICROSECONDS);
+        //execService2.schedule(counter, 1, TimeUnit.MICROSECONDS);
+
+        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
+        //executor.submit(new RunnableCounter());
+        //executor.submit(new RunnableCounter());
+        //executor.submit(new RunnableCounter());
+
+        //executor.submit(new SubZero());
+        //executor.submit(new Scorpion());
+
+        RunnableCounter SubZero = new RunnableCounter();
+        RunnableCounter Scorpion = new RunnableCounter();
+
+        SubZero.finisher = new Finisher() {
+            @Override
+            public void finishHim() {
+                System.out.println("CHILLING!");
+            }
+        };
+
+        Scorpion.finisher = new Finisher() {
+            @Override
+            public void finishHim() {
+                System.out.println("You've been scorpioed!");
+            }
+        };
+
+        executor.submit(SubZero);
+        executor.submit(Scorpion);
+
+        executor.shutdown();
+    }
+
+    public static String updateSomeData(String newData) throws InterruptedException {
+        System.out.println("Function: validation of data");
+        Thread.sleep(20);
+        System.out.println("Function: updating data to " + newData);
+        Thread.sleep(20);
+
+        Runnable later = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    System.out.println("Function: looking for users that have to be notified");
+                    Thread.sleep(2000);
+                    System.out.println("Function: connecting to mail api (mailgun)");
+                    Thread.sleep(500);
+                    System.out.println("Function: Sending messages");
+                    Thread.sleep(2000);
+                    System.out.println("Info: Done! :D");
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        ScheduledExecutorService execService = Executors.newSingleThreadScheduledExecutor();
+        execService.schedule(later, 1, TimeUnit.SECONDS);
+        return "data was updated succesfully";
     }
 }
