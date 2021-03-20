@@ -5,6 +5,7 @@ import com.company.Devices.*;
 import com.company.World.CountryEnum;
 import com.company.World.CountryHashMap;
 import com.company.buildings.Garage;
+import threads.CallableCounter;
 import threads.Finisher;
 import threads.RunnableCounter;
 
@@ -273,12 +274,45 @@ public class Main {
         RunnableCounter Scorpion = new RunnableCounter();
 
         SubZero.finisher = () -> System.out.println("CHILLING!");
-
         Scorpion.finisher = () -> System.out.println("You've been scorpioed!");
-        
-        executor.submit(SubZero);
-        executor.submit(Scorpion);
 
+        //executor.submit(SubZero);
+        //executor.submit(Scorpion);
+        CallableCounter cage = new CallableCounter();
+        CallableCounter liuKang = new CallableCounter();
+
+        cage.finisher = () -> System.out.println("You're locked up!");
+        liuKang.finisher = () -> System.out.println("Liu Kang FTW!");
+
+        System.out.println("Test 1");
+
+        Future<Double> hpCage = executor.submit(cage);
+        Future<Double> hpLiuKang = executor.submit(liuKang);
+
+        System.out.println("Test 2");
+        System.out.println("Test 2");
+        System.out.println("Test 2");
+        System.out.println("Test 2");
+        System.out.println("Test 2");
+        System.out.println("Test 2");
+        System.out.println("Test 2");
+        System.out.println("Test 2");
+        System.out.println("Test 2");
+        System.out.println("Test 2");
+        System.out.println("Test 2");
+        System.out.println("Test 2");
+
+        System.out.println(hpCage.get());
+
+        System.out.println("Test 3");
+        System.out.println(hpLiuKang.get());
+
+        System.out.println("Test 4");
+        if (hpCage.get() > hpLiuKang.get()) {
+            cage.finisher.finishHim();
+        } else {
+            liuKang.finisher.finishHim();
+        }
         executor.shutdown();
     }
 
