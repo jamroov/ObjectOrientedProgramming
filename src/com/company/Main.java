@@ -272,20 +272,10 @@ public class Main {
         RunnableCounter SubZero = new RunnableCounter();
         RunnableCounter Scorpion = new RunnableCounter();
 
-        SubZero.finisher = new Finisher() {
-            @Override
-            public void finishHim() {
-                System.out.println("CHILLING!");
-            }
-        };
+        SubZero.finisher = () -> System.out.println("CHILLING!");
 
-        Scorpion.finisher = new Finisher() {
-            @Override
-            public void finishHim() {
-                System.out.println("You've been scorpioed!");
-            }
-        };
-
+        Scorpion.finisher = () -> System.out.println("You've been scorpioed!");
+        
         executor.submit(SubZero);
         executor.submit(Scorpion);
 
