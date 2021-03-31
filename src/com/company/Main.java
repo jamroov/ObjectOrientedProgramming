@@ -316,6 +316,8 @@ public class Main {
             liuKang.finisher.finishHim();
         }
         executor.shutdown();
+        
+        System.out.println("Am on a new branch!");
     }
 
     public static String updateSomeData(String newData) throws InterruptedException {
