@@ -6,7 +6,6 @@ import com.company.World.CountryEnum;
 import com.company.World.CountryHashMap;
 import com.company.buildings.Garage;
 import threads.CallableCounter;
-import threads.Finisher;
 import threads.RunnableCounter;
 
 import java.util.*;
@@ -234,11 +233,11 @@ public class Main {
         for (Animal animal : animalList) {
             System.out.println(animal.toString());
         }
-        animalList.sort(animalComparator);
-        System.out.println("animalList after sort");
-        for (Animal animal : animalList) {
-            System.out.println(animal.toString());
-        }
+        //animalList.sort(animalComparator);
+        //System.out.println("animalList after sort");
+        //for (Animal animal : animalList) {
+            //System.out.println(animal.toString());
+        //}
         //System.out.println(updateSomeData("very new data indeed"));
         Runnable counter = new Runnable() {
             @Override
@@ -289,19 +288,6 @@ public class Main {
         Future<Double> hpCage = executor.submit(cage);
         Future<Double> hpLiuKang = executor.submit(liuKang);
 
-        System.out.println("Test 2");
-        System.out.println("Test 2");
-        System.out.println("Test 2");
-        System.out.println("Test 2");
-        System.out.println("Test 2");
-        System.out.println("Test 2");
-        System.out.println("Test 2");
-        System.out.println("Test 2");
-        System.out.println("Test 2");
-        System.out.println("Test 2");
-        System.out.println("Test 2");
-        System.out.println("Test 2");
-
         System.out.println(hpCage.get());
         
         System.out.println("This is another change");
@@ -316,8 +302,46 @@ public class Main {
             liuKang.finisher.finishHim();
         }
         executor.shutdown();
-        
         System.out.println("Am on a new branch!");
+
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        numbers.add(5);
+        numbers.add(9);
+        numbers.add(8);
+        numbers.add(1);
+        numbers.forEach( (n) -> { System.out.println(n); } );
+
+        //lambda to variable with interface
+        CompareAnimals compare = (animal1, animal2) -> {
+            if (animal1.getWeight() > animal2.getWeight()) {
+                return animal1.getWeight();
+            }
+            else if (animal1.getWeight() < animal2.getWeight()) {
+                return animal2.getWeight();
+            }
+            else {
+                return 0.0;
+            }
+        };
+
+        //lambda to variable with interface using ternary operator
+        CompareAnimals compare2 = (animal1, animal2) ->
+                animal1.getWeight() > animal2.getWeight() ? animal1.getWeight():animal2.getWeight();
+
+        System.out.println(CompareAnimalWeight(Krasula, Burek, compare));
+        System.out.println(CompareAnimalWeight(Marek, Ania, compare));
+        System.out.println(CompareAnimalWeight(Marek, Ania, compare2));
+
+        //Passing lambda to sort
+        animalList.sort(((animal1, animal2) -> (int) (animal1.getWeight() - animal2.getWeight())));
+        for (Animal item : animalList) {
+            System.out.println(item.toString());
+        }
+    }
+
+    //Method implementing CompareAnimals interface
+    public static Double CompareAnimalWeight(Animal anim1, Animal anim2, CompareAnimals comparator) {
+        return comparator.compare(anim1, anim2);
     }
 
     public static String updateSomeData(String newData) throws InterruptedException {
