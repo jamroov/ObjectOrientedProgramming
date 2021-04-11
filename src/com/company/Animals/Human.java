@@ -1,7 +1,6 @@
 package com.company.Animals;
 
-import com.company.Animals.Animal;
-import com.company.Animals.Feedable;
+import com.company.Annotations.Mapped;
 import com.company.Devices.Car;
 import com.company.Devices.Phone;
 import com.company.buildings.Garage;
@@ -10,10 +9,15 @@ import java.sql.SQLException;
 import java.util.Date;
 
 public class Human extends Animal implements Feedable {  // Inheritance
+    @Mapped
     public String firstName;
+    @Mapped
     public String lastName;
+    @Mapped
     public Animal pet;
+    @Mapped
     public Phone telephone;
+    @Mapped
     public Car automobile;
     public Garage garage;
     private Double accountValue = 0.0;

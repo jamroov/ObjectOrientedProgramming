@@ -1,6 +1,8 @@
 package com.company.Devices;
 
 import com.company.Animals.Human;
+import com.company.Annotations.Mapped;
+import jdk.jfr.MemoryAddress;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -8,13 +10,17 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class Phone extends Device {
+    @Mapped
     final Double screenSize;
     static final String serverAddress = "http://server.com";
     static final String defaultProtocol = "IMAP";
     static final Double defaultVersion = 1.0;
     static final Double defaultAppPrice = 0.0;
+    @Mapped
     public ArrayList<Application> installedApps = new ArrayList<>();
+    @Mapped
     private ArrayList<String> installedAppsNames = new ArrayList<>();
+    @Mapped
     final OperatingSystem operatingSystem;
 
     public Phone(String vendor, Double screenSize, Integer yearOfProduction, Double price, OperatingSystem operatingSystem) {

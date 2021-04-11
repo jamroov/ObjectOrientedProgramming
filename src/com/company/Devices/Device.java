@@ -1,10 +1,12 @@
 package com.company.Devices;
 
 import com.company.Animals.Human;
+import com.company.Annotations.MappedClass;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+@MappedClass
 public abstract class Device implements Sellable, Comparable<Device> {
 
     final String vendor;

@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.Animals.*;
+import com.company.Annotations.ObjectToSql;
 import com.company.Devices.*;
 import com.company.World.CountryEnum;
 import com.company.World.CountryHashMap;
@@ -337,6 +338,11 @@ public class Main {
         for (Animal item : animalList) {
             System.out.println(item.toString());
         }
+        ObjectToSql sqlTool = new ObjectToSql();
+        System.out.println(sqlTool.insert((Animal) Krasula));
+        System.out.println(sqlTool.insert(tesla));
+        System.out.println(sqlTool.insert(Iphone));
+        System.out.println(sqlTool.insert(Marek));
     }
 
     //Method implementing CompareAnimals interface
