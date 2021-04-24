@@ -3,6 +3,7 @@ package com.company;
 import com.company.Animals.*;
 import com.company.Annotations.ObjectToSql;
 import com.company.Devices.*;
+import com.company.Generics.SuperNumber;
 import com.company.Sorting.BubbleSort;
 import com.company.Sorting.CallableSorter;
 import com.company.World.CountryEnum;
@@ -348,13 +349,13 @@ public class Main {
 
         Random rand = new Random();
         //Integer ArrSize = 0xFFFF;
-        Integer[] arr1 = new Integer[512];
+        Integer[] arr1 = new Integer[4096];
 
-        Integer[] arr2 = new Integer[1024];
+        Integer[] arr2 = new Integer[4096*2];
 
-        Integer[] arr3 = new Integer[2048];
+        Integer[] arr3 = new Integer[4096*4];
 
-        Integer[] arr4 = new Integer[4096];
+        Integer[] arr4 = new Integer[4096*8];
         BubbleSort my_sort = new BubbleSort();
 
         for (Integer i = 0; i < arr1.length; i++) {
@@ -380,12 +381,12 @@ public class Main {
         //my_sort.printArr(arr4);
 
         Long start = System.currentTimeMillis();
-        my_sort.bubbleSort(arr1);
-        my_sort.bubbleSort(arr2);
-        my_sort.bubbleSort(arr3);
-        my_sort.bubbleSort(arr4);
+        //my_sort.bubbleSort(arr1);
+        //my_sort.bubbleSort(arr2);
+        //my_sort.bubbleSort(arr3);
+        //my_sort.bubbleSort(arr4);
         Long finish = System.currentTimeMillis();
-        System.out.printf("Bubble sort one by one took: %d milliseconds\n", finish - start);
+        //System.out.printf("Bubble sort one by one took: %d milliseconds\n", finish - start);
 
         //System.out.println("Sorted array 1:\n");
         //my_sort.printArr(arr1);
@@ -412,6 +413,16 @@ public class Main {
         finish = System.currentTimeMillis();
         System.out.printf("Bubble sort with callable took: %d milliseconds\n", finish - start);
         System.out.println(Arrays.toString(sortedArr1.get().toArray()));
+
+        SuperNumber<Double> myDbl = new SuperNumber<>(4.0);
+        SuperNumber<Integer> myInt = new SuperNumber<>(4);
+
+        System.out.println(myDbl.valEqual());
+        System.out.println(myInt.valEqual());
+        System.out.println(myDbl.dblsEqual(new SuperNumber<>(5.0)).toString());
+        System.out.println(myDbl.dblsEqual(new SuperNumber<>(4.0)).toString());
+        System.out.println(myInt.intsEqual(new SuperNumber<>(5)).toString());
+        System.out.println(myInt.intsEqual(new SuperNumber<>(4)).toString());
     }
 
     //Method implementing CompareAnimals interface
