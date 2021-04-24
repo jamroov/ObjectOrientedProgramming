@@ -3,7 +3,7 @@ package com.company;
 import com.company.Animals.*;
 import com.company.Annotations.ObjectToSql;
 import com.company.Devices.*;
-import com.company.Generics.Container;
+import com.company.Generics.ContainerWithMem;
 import com.company.Generics.SuperNumber;
 import com.company.Sorting.BubbleSort;
 import com.company.Sorting.CallableSorter;
@@ -426,9 +426,21 @@ public class Main {
         System.out.println(myInt.intsEqual(new SuperNumber<>(5)).toString());
         System.out.println(myInt.intsEqual(new SuperNumber<>(4)).toString());
 
-        Container<Integer> myIntContainer = new Container<>();
+        ContainerWithMem<Integer> myIntContainer = new ContainerWithMem<>();
         for (int i = 1; i < 11; i++) myIntContainer.add(i);
         System.out.println(myIntContainer.numChanges);
+        myIntContainer.remove(3);
+        myIntContainer.remove(6);
+
+        myIntContainer.printRevision(5);
+        myIntContainer.printRevision(3);
+
+        myIntContainer.restoreToRevision(3);
+
+        myIntContainer.printAllRevisions();
+
+        myIntContainer.restoreToRevision(11);
+        myIntContainer.printAllRevisions();
         //System.exit(0);
     }
 

@@ -4,8 +4,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class Container<T> implements Collection<T> {
+public class ContainerWithMem<T> implements Collection<T> {
     public List<T> list = new ArrayList<T>();
+    public ArrayList<List<T>> history = new ArrayList<>();
     public Integer numChanges = 0;
 
     @Override
@@ -36,6 +37,8 @@ public class Container<T> implements Collection<T> {
     @Override
     public boolean add(T o) {
         this.list.add(0, o);
+        List<T> copy = new ArrayList<>(this.list);
+        this.history.add(copy);
         this.numChanges += 1;
         return true;
     }
@@ -43,6 +46,8 @@ public class Container<T> implements Collection<T> {
     @Override
     public boolean remove(Object o) {
         this.list.remove(o);
+        List<T> copy = new ArrayList<>(this.list);
+        this.history.add(copy);
         this.numChanges += 1;
         return true;
     }
@@ -79,6 +84,33 @@ public class Container<T> implements Collection<T> {
 
     public void deleteAll() {
         this.list.clear();
+        List<T> copy = new ArrayList<>(this.list);
+        this.history.add(copy);
         this.numChanges += 1;
+    }
+
+    public List<T> getRevision(int rev) {
+        return this.history.get(rev);
+    }
+
+    public void printRevision(int rev) {
+        System.out.println(Arrays.toString(this.history.get(rev).toArray()));
+    }
+
+    public void printAllRevisions() {
+        System.out.printf("Number of revisions: %d\n", this.numChanges);
+        int i = 0;
+        for (List<T> list : this.history) {
+            System.out.printf("%d: ", i);
+            System.out.println(Arrays.toString(list.toArray()));
+            i += 1;
+        }
+    }
+
+    public void restoreToRevision(int rev) {
+        this.list = this.history.get(rev);
+        this.numChanges += 1;
+        List<T> copy = new ArrayList<>(this.list);
+        this.history.add(copy);
     }
 }
