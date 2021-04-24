@@ -3,6 +3,8 @@ package com.company;
 import com.company.Animals.*;
 import com.company.Annotations.ObjectToSql;
 import com.company.Devices.*;
+import com.company.Sorting.BubbleSort;
+import com.company.Sorting.CallableSorter;
 import com.company.World.CountryEnum;
 import com.company.World.CountryHashMap;
 import com.company.buildings.Garage;
@@ -262,7 +264,7 @@ public class Main {
         //execService1.schedule(counter, 1, TimeUnit.MICROSECONDS);
         //execService2.schedule(counter, 1, TimeUnit.MICROSECONDS);
 
-        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
+        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
         //executor.submit(new RunnableCounter());
         //executor.submit(new RunnableCounter());
         //executor.submit(new RunnableCounter());
@@ -343,6 +345,73 @@ public class Main {
         System.out.println(sqlTool.insert(tesla));
         System.out.println(sqlTool.insert(Iphone));
         System.out.println(sqlTool.insert(Marek));
+
+        Random rand = new Random();
+        //Integer ArrSize = 0xFFFF;
+        Integer[] arr1 = new Integer[512];
+
+        Integer[] arr2 = new Integer[1024];
+
+        Integer[] arr3 = new Integer[2048];
+
+        Integer[] arr4 = new Integer[4096];
+        BubbleSort my_sort = new BubbleSort();
+
+        for (Integer i = 0; i < arr1.length; i++) {
+            arr1[i] = rand.nextInt();
+        }
+        for (Integer i = 0; i < arr2.length; i++) {
+            arr2[i] = rand.nextInt();
+        }
+        for (Integer i = 0; i < arr3.length; i++) {
+            arr3[i] = rand.nextInt();
+        }
+        for (Integer i = 0; i < arr4.length; i++) {
+            arr4[i] = rand.nextInt();
+        }
+
+        //System.out.println("Unsorted array 1:\n");
+        //my_sort.printArr(arr1);
+        //System.out.println("Unsorted array 2:\n");
+        //my_sort.printArr(arr2);
+        //System.out.println("Unsorted array 3:\n");
+        //my_sort.printArr(arr3);
+        //System.out.println("Unsorted array 4:\n");
+        //my_sort.printArr(arr4);
+
+        Long start = System.currentTimeMillis();
+        my_sort.bubbleSort(arr1);
+        my_sort.bubbleSort(arr2);
+        my_sort.bubbleSort(arr3);
+        my_sort.bubbleSort(arr4);
+        Long finish = System.currentTimeMillis();
+        System.out.printf("Bubble sort one by one took: %d milliseconds\n", finish - start);
+
+        //System.out.println("Sorted array 1:\n");
+        //my_sort.printArr(arr1);
+        //System.out.println("Sorted array 2:\n");
+        //my_sort.printArr(arr2);
+        //System.out.println("Sorted array 3:\n");
+        //my_sort.printArr(arr3);
+        //System.out.println("Sorted array 4:\n");
+        //my_sort.printArr(arr4);
+
+        ThreadPoolExecutor sorting_executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
+        CallableSorter callableSorter1 = new CallableSorter(arr1);
+        CallableSorter callableSorter2 = new CallableSorter(arr2);
+        CallableSorter callableSorter3 = new CallableSorter(arr3);
+        CallableSorter callableSorter4 = new CallableSorter(arr4);
+
+        start = System.currentTimeMillis();
+
+        Future<List<Integer>> sortedArr1 = sorting_executor.submit(callableSorter1);
+        Future<List<Integer>> sortedArr2 = sorting_executor.submit(callableSorter2);
+        Future<List<Integer>> sortedArr3 = sorting_executor.submit(callableSorter3);
+        Future<List<Integer>> sortedArr4 = sorting_executor.submit(callableSorter4);
+        sorting_executor.shutdown();
+        finish = System.currentTimeMillis();
+        System.out.printf("Bubble sort with callable took: %d milliseconds\n", finish - start);
+        System.out.println(Arrays.toString(sortedArr1.get().toArray()));
     }
 
     //Method implementing CompareAnimals interface
