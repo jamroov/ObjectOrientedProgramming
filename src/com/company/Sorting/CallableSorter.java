@@ -9,8 +9,17 @@ public class CallableSorter implements Callable<List<Integer>> {
     public Integer[] sorted_arr;
     @Override
     public List<Integer> call() throws Exception {
-        BubbleSort sort = new BubbleSort();
-        this.sorted_arr = sort.bubbleSort(this.arr);
+        Long start = System.currentTimeMillis();
+        Long finish;
+        try {
+            start = System.currentTimeMillis();
+            BubbleSort sort = new BubbleSort();
+            this.sorted_arr = sort.bubbleSort(this.arr);
+        }
+        finally {
+            finish = System.currentTimeMillis();
+            System.out.printf("Bubble took: %d milliseconds\n", finish - start);
+        }
         return Arrays.asList(this.sorted_arr);
     }
 

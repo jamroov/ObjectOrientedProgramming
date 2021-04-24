@@ -349,15 +349,15 @@ public class Main {
 
         Random rand = new Random();
         //Integer ArrSize = 0xFFFF;
-        Integer[] arr1 = new Integer[4096];
+        Integer[] arr1 = new Integer[5647];
 
-        Integer[] arr2 = new Integer[4096*2];
+        Integer[] arr2 = new Integer[3214];
 
-        Integer[] arr3 = new Integer[4096*4];
+        Integer[] arr3 = new Integer[8784];
 
-        Integer[] arr4 = new Integer[4096*8];
+        Integer[] arr4 = new Integer[9878];
         BubbleSort my_sort = new BubbleSort();
-
+        Long start = System.currentTimeMillis();
         for (Integer i = 0; i < arr1.length; i++) {
             arr1[i] = rand.nextInt();
         }
@@ -370,7 +370,8 @@ public class Main {
         for (Integer i = 0; i < arr4.length; i++) {
             arr4[i] = rand.nextInt();
         }
-
+        Long finish = System.currentTimeMillis();
+        System.out.printf("Randomizing arrays took: %d milliseconds\n", finish - start);
         //System.out.println("Unsorted array 1:\n");
         //my_sort.printArr(arr1);
         //System.out.println("Unsorted array 2:\n");
@@ -380,13 +381,13 @@ public class Main {
         //System.out.println("Unsorted array 4:\n");
         //my_sort.printArr(arr4);
 
-        Long start = System.currentTimeMillis();
-        //my_sort.bubbleSort(arr1);
-        //my_sort.bubbleSort(arr2);
-        //my_sort.bubbleSort(arr3);
-        //my_sort.bubbleSort(arr4);
-        Long finish = System.currentTimeMillis();
-        //System.out.printf("Bubble sort one by one took: %d milliseconds\n", finish - start);
+        start = System.currentTimeMillis();
+        my_sort.bubbleSort(arr1);
+        my_sort.bubbleSort(arr2);
+        my_sort.bubbleSort(arr3);
+        my_sort.bubbleSort(arr4);
+        finish = System.currentTimeMillis();
+        System.out.printf("Bubble sort one by one took: %d milliseconds\n", finish - start);
 
         //System.out.println("Sorted array 1:\n");
         //my_sort.printArr(arr1);
@@ -411,8 +412,8 @@ public class Main {
         Future<List<Integer>> sortedArr4 = sorting_executor.submit(callableSorter4);
         sorting_executor.shutdown();
         finish = System.currentTimeMillis();
-        System.out.printf("Bubble sort with callable took: %d milliseconds\n", finish - start);
-        System.out.println(Arrays.toString(sortedArr1.get().toArray()));
+        //System.out.printf("Bubble sort with callable took: %d milliseconds\n", finish - start);
+        //System.out.println(Arrays.toString(sortedArr1.get().toArray()));
 
         SuperNumber<Double> myDbl = new SuperNumber<>(4.0);
         SuperNumber<Integer> myInt = new SuperNumber<>(4);
@@ -423,6 +424,8 @@ public class Main {
         System.out.println(myDbl.dblsEqual(new SuperNumber<>(4.0)).toString());
         System.out.println(myInt.intsEqual(new SuperNumber<>(5)).toString());
         System.out.println(myInt.intsEqual(new SuperNumber<>(4)).toString());
+
+        //System.exit(0);
     }
 
     //Method implementing CompareAnimals interface

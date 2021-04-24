@@ -8,11 +8,11 @@ public class SuperNumber<T extends Number> {
     }
 
     public Double returnDbl() {
-        return (Double) obj;
+        return obj.doubleValue();
     }
 
     public Integer returnInt() {
-        return (Integer) obj;
+        return obj.intValue();
     }
 
     public Boolean dblsEqual(SuperNumber<T> num) {
